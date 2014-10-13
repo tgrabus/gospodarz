@@ -26,21 +26,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="10ab08f9-dfa3-4542-bda7-99db0f2b9860" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/main.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/shell.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/viewmodels/shell.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/styles/app.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="web.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="$PROJECT_DIR$/../api/api/settings.py" changelist="10ab08f9-dfa3-4542-bda7-99db0f2b9860" time="1413149793090" ignored="false" />
-    <file path="/Dummy.txt" changelist="10ab08f9-dfa3-4542-bda7-99db0f2b9860" time="1413234505948" ignored="false" />
-    <file path="/index.html" changelist="10ab08f9-dfa3-4542-bda7-99db0f2b9860" time="1413231404516" ignored="false" />
+    <file path="/Dummy.txt" changelist="10ab08f9-dfa3-4542-bda7-99db0f2b9860" time="1413234628150" ignored="false" />
+    <file path="/index.html" changelist="10ab08f9-dfa3-4542-bda7-99db0f2b9860" time="1413234815405" ignored="false" />
     <file path="/JavaScript File.txt.ft" changelist="10ab08f9-dfa3-4542-bda7-99db0f2b9860" time="1413231719318" ignored="false" />
     <file path="/main.js" changelist="10ab08f9-dfa3-4542-bda7-99db0f2b9860" time="1413233291768" ignored="false" />
-    <file path="/shell.html" changelist="10ab08f9-dfa3-4542-bda7-99db0f2b9860" time="1413234111864" ignored="false" />
+    <file path="/shell.html" changelist="10ab08f9-dfa3-4542-bda7-99db0f2b9860" time="1413234858638" ignored="false" />
     <file path="/shell.js" changelist="10ab08f9-dfa3-4542-bda7-99db0f2b9860" time="1413234077028" ignored="false" />
+    <file path="/app.css" changelist="10ab08f9-dfa3-4542-bda7-99db0f2b9860" time="1413234834246" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -117,9 +116,10 @@
     <option name="changedFiles">
       <list>
         <option value="$PROJECT_DIR$/app/viewmodels/shell.js" />
-        <option value="$PROJECT_DIR$/app/views/shell.html" />
         <option value="$PROJECT_DIR$/app/main.js" />
         <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/styles/app.css" />
+        <option value="$PROJECT_DIR$/app/views/shell.html" />
       </list>
     </option>
   </component>
@@ -187,25 +187,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="bower_components" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bower_components" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="fontawesome" />
+              <option name="myItemId" value="styles" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -286,6 +268,11 @@
       <PyConsoleSettings />
     </option>
   </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Tomasz\IdeaProjects\gospodarz\web\styles" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
       <module name="" />
@@ -357,6 +344,13 @@
       <envs />
       <method />
     </configuration>
+    <configuration default="true" type="JavascriptDebugSession" factoryName="Local" singleton="true">
+      <JSDebuggerConfigurationSettings>
+        <option name="engineId" />
+        <option name="fileUrl" />
+      </JSDebuggerConfigurationSettings>
+      <method />
+    </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="" />
@@ -413,7 +407,11 @@
       <created>1413231206380</created>
       <updated>1413231206380</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="hello world">
+      <created>1413234636967</created>
+      <updated>1413234636967</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -518,23 +516,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="51" selection-start="350" selection-end="350" vertical-scroll-proportion="-5.230769">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/styles/app.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="14" selection-start="58" selection-end="58" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/shell.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="35" selection-start="35" selection-end="35" vertical-scroll-proportion="0.0">
+        <state line="0" column="43" selection-start="42" selection-end="42" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="43" column="32" selection-start="1059" selection-end="1059" vertical-scroll-proportion="1.1409619">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="28" selection-start="393" selection-end="393" vertical-scroll-proportion="0.3830156">
+        <state line="29" column="51" selection-start="819" selection-end="819" vertical-scroll-proportion="0.5405702">
           <folding />
         </state>
       </provider>
