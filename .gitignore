@@ -52,3 +52,6 @@ docs/_build/
 
 # PyBuilder
 target/
+
+#bower staff
+bower_components/
