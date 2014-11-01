@@ -19,6 +19,9 @@
   "dependencies": {
     "durandal": "~2.1.0",
     "fontawesome": "~4.2.0",
-    "bootstrap": "~3.2.0"
+    "bootstrap": "~3.2.0",
+    "typeahead.js": "~0.10.5",
+    "underscore": "~1.7.0",
+    "requirejs-plugins": "~1.0.2"
   }
 }

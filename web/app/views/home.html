@@ -1,57 +1,103 @@
 <div>
-    <div class="row">
+    <div class="row" id="filters-panel">
         <div class="col-md-12">
-            <form class="form-horizontal" role="form">
-                <div class="form-group">
-                    <label for="selectCity" class="col-md-offset-2 col-md-2 control-label">Wybierz miasto:</label>
-
-                    <div class="col-md-6">
-                        <select id="selectCity" class="form-control">
-                            <option>Gdańsk</option>
-                            <option>Gdynia</option>
-                            <option>Sopot</option>
-                            <option>Warszawa</option>
-                        </select>
+            <nav class="navbar navbar-default" role="navigation">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <a class="navbar-brand" href="#">Określ:</a>
                     </div>
+                    <ul class="nav navbar-nav nav-tabs">
+                        <li><a href="#home" role="tab" data-toggle="tab">lokalizacje</a></li>
+                        <li><a href="#profile" role="tab" data-toggle="tab">produkty</a></li>
+                        <li><a href="#messages" role="tab" data-toggle="tab">sprzedających</a></li>
+                    </ul>
                 </div>
-                <div class="form-group">
-                    <label for="selectCity" class="col-md-offset-2 col-md-2 control-label">Wybierz ulicę:</label>
 
-                    <div class="col-md-6">
-                        <select id="selectStreet" class="form-control">
-                            <option>Grunwaldzka</option>
-                            <option>AAASSSot</option>
-                            <option>SFSD</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-md-offset-4 col-md-8">
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox"> Zapamiętaj mój wybór
-                            </label>
+                <div class="tab-content">
+                    <div class="tab-pane" id="home">
+                        <br/>
+                        <div class="row">
+                            <div class="col-md-offset-2 col-md-8">
+                                <div class="form-group">
+                                    <input id="searchCity" type="text" placeholder="Wyszukaj miasto" class="form-control" data-bind=" value: enteredValue, valueUpdate = 'afterkeydown', event: { 'keyup': searchForCities }">
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <!-- ko foreach: filteredCities -->
+                            <div class="col-md-2">
+                                <!-- ko foreach: $data -->
+                                   <p>
+                                       <a data-bind="text: $data, click: $root.dupa"></a>
+                                   </p>
+                                <!-- /ko -->
+                            </div>
+                            <!-- /ko -->
                         </div>
                     </div>
+                    <div class="tab-pane" id="profile">asdsad</div>
+                    <div class="tab-pane" id="messages">.adsagfsdfg..</div>
                 </div>
-                <div class="form-group">
-                    <div class="col-md-offset-4 col-md-8">
-                        <button type="submit" class="btn btn-default">Szukaj</button>
+            </nav>
+
+            <div id="selected-filters">
+                 <div class="row">
+                     <div class="col-md-1">
+                         <b>Lokalizacje:</b>
+                     </div>
+                     <div class="col-md-11">
+                         <ul data-bind="foreach: selectedCities">
+                             <li data-bind="text: $data"></li>
+                         </ul>
+                     </div>
+                 </div>
+                <div class="row">
+                    <div class="col-md-1">
+                        <b>Produkty:</b>
+                    </div>
+                    <div class="col-md-11">
                     </div>
                 </div>
-            </form>
+                <div class="row">
+                    <div class="col-md-1">
+                        <b>Sprzedający:</b>
+                    </div>
+                    <div class="col-md-11">
+                            ...
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-    <div class="row">
+    <div class="row margin-top-05" id="map-panel">
         <div class="col-md-12">
-            <div class="list-group">
-                <a href="#" class="list-group-item active">
-                    Cras justo odio
-                </a>
-                <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
-                <a href="#" class="list-group-item">Morbi leo risus</a>
-                <a href="#" class="list-group-item">Porta ac consectetur ac</a>
-                <a href="#" class="list-group-item">Vestibulum at eros</a>
+            <div id="map-canvas">
+
+            </div>
+        </div>
+    </div>
+    <div class="row margin-top-05" id="results-panel">
+        <div class="col-md-12">
+            <p></p>
+
+
+            <div class="list-group" id="accord">
+                <li data-toggle="collapse" data-parent="#accord" data-target="#test" class="list-group-item">
+                    <h4 class="list-group-item-heading">List group item heading</h4>
+
+                    <div class="collapse" id="test">
+                        <p class="list-group-item-text">adasdadasd</p>
+                    </div>
+                </li>
+                <li data-toggle="collapse" data-parent="#accord" data-target="#test2" class="list-group-item">
+                    <h4 class="list-group-item-heading">List group2 item heading</h4>
+
+                    <div class="collapse" id="test2">
+                        <p class="list-group-item-text">asdasdas</p>
+                    </div>
+                </li>
             </div>
         </div>
     </div>

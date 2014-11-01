@@ -13,12 +13,28 @@ requirejs.config({
         'transitions' : '../bower_components/durandal/js/transitions',
         'knockout': '../bower_components/knockout.js/knockout',
         'bootstrap': '../bower_components/bootstrap/dist/js/bootstrap',
-        'jquery': '../bower_components/jquery/jquery'
+        'jquery': '../bower_components/jquery/jquery',
+        'typeahead': '../bower_components/typeahead.js/dist/typeahead.jquery',
+        'bloodhound': '../bower_components/typeahead.js/dist/bloodhound',
+        'underscore': '../bower_components/underscore/underscore',
+        'async': '../bower_components/requirejs-plugins/src/async',
+        'services': 'services'
     },
     shim: {
         'bootstrap': {
             deps: ['jquery'],
             exports: 'jQuery'
+        },
+        'typeahead': {
+            deps: ['jquery'],
+            exports: 'jQuery'
+        },
+        'bloodhound':{
+            deps: ['jquery'],
+            exports: 'jQuery'
+        },
+        'underscore': {
+            exports: '_'
         }
     }
 });
