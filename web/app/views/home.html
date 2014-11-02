@@ -19,18 +19,18 @@
                         <div class="row">
                             <div class="col-md-offset-2 col-md-8">
                                 <div class="form-group">
-                                    <input id="searchCity" type="text" placeholder="Wyszukaj miasto" class="form-control" data-bind=" value: enteredValue, valueUpdate = 'afterkeydown', event: { 'keyup': searchForCities }">
+                                    <input id="searchCity" type="text" placeholder="Wyszukaj miasto" class="form-control" data-bind="valueUpdate = 'afterkeydown', event: { 'keyup': searchForCities }">
                                 </div>
 
                             </div>
                         </div>
 
-                        <div class="row">
+                        <div class="row" id="filtered-elements">
                             <!-- ko foreach: filteredCities -->
                             <div class="col-md-2">
                                 <!-- ko foreach: $data -->
                                    <p>
-                                       <a data-bind="text: $data, click: $root.dupa"></a>
+                                       <a data-bind="text: $data, click: $root.selectCity"></a>
                                    </p>
                                 <!-- /ko -->
                             </div>

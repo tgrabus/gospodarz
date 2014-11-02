@@ -5,33 +5,58 @@
  */
 
 define([
-    'bootstrap',
-    'knockout',
-    'services/maps',
-    'services/mock/filters'],
-    function (jQuery, ko, googleMap, filters) {
-        return {
-            attached: function (view, parent) {
-                var mapPanel = jQuery("#map-canvas").get(0);
-                //googleMap.addMapToCanvas(mapPanel);
+        'bootstrap',
+        'knockout',
+        'utils/strings',
+        'services/maps',
+        'services/mock/filters'
+    ],
+    function ($, ko, strings, googleMap, filters) {
 
-                jQuery("#searchCity").keyup(function() {
-                    jQuery("#mistake").focus();
-                    jQuery("#searchCity").focus();
-                });
-            },
-            dupa: function(item, event) {
-                var i = 1;
-                var a = 2;
-            },
-            cities: filters.getAllCities(),
-            filteredCities: ko.observableArray(divideArrayBy(filters.getAllCities(), 6)),
-            searchForCities: searchForCities,
-            enteredValue: ko.observable(""),
-            selectedCities: ko.observableArray([]),
-            selectCity: selectCity
+        var collectionOfCities = filters.getAllCities();
+
+        var home = function () {
+            this.filteredCities = ko.observableArray([]);
+            this.selectedCities = ko.observableArray([]);
         };
+
+        home.prototype.attached = function () {
+            var mapPanel = $("#map-canvas").get(0);
+            googleMap.addMapToCanvas(mapPanel);
+        };
+
+        home.prototype.searchForCities = function () {
+            var searchedWord = $('#searchCity').val();
+
+            if(strings.isNullOrEmpty(searchedWord)) {
+                this.filteredCities([]);
+                return;
+            }
+
+            var filtered = collectionOfCities.filter(function(city) {
+                return new RegExp(searchedWord, "i").test(city);
+            });
+
+            this.filteredCities(divideArrayBy(filtered, 6));
+
+            highlightMatchedText('#filtered-elements a', searchedWord);
+        };
+
+        home.prototype.selectCity = function(aa, bb) {
+            var a = $(this);
+            var b = 1;
+        }
+
+        return new home();
     });
+
+function highlightMatchedText(source, pattern, color) {
+    $(source).each(function() {
+        var text = $(this).text();
+        var highlightText = text.replace(new RegExp('(' + pattern + ')', 'gi'), '<span style="background-color: #d3d3d3">$1</span>');
+        $(this).html(highlightText);
+    });
+}
 
 function divideArrayBy(arraySource, spliceDivider) {
     var arrays = [];
@@ -41,17 +66,6 @@ function divideArrayBy(arraySource, spliceDivider) {
         arrays.push(arraySource.splice(0, spliceLength));
 
     return arrays;
-}
-
-
-function searchForCities(viewModel) {
-    var searchedWord = $('#searchCity').val();
-    var regex = new RegExp(searchedWord, "i");
-    var filtered = viewModel.cities.filter(function(item) {
-        return regex.test(item);
-    });
-
-    this.filteredCities(divideArrayBy(filtered, 6));
 }
 
 function selectCity(item, event)  {
@@ -66,4 +80,3 @@ function selectCity(item, event)  {
 
     viewModel.selectedCities(selectedCities);
 }
-

@@ -18,7 +18,8 @@ requirejs.config({
         'bloodhound': '../bower_components/typeahead.js/dist/bloodhound',
         'underscore': '../bower_components/underscore/underscore',
         'async': '../bower_components/requirejs-plugins/src/async',
-        'services': 'services'
+        'services': 'services',
+        'utils': 'utils'
     },
     shim: {
         'bootstrap': {
