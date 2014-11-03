@@ -19,6 +19,7 @@ requirejs.config({
         'underscore': '../bower_components/underscore/underscore',
         'async': '../bower_components/requirejs-plugins/src/async',
         'services': 'services',
+        'models': 'models',
         'utils': 'utils'
     },
     shim: {

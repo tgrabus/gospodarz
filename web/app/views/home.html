@@ -1,6 +1,6 @@
 <div>
     <div class="row" id="filters-panel">
-        <div class="col-md-12">
+        <div class="col-sm-12">
             <nav class="navbar navbar-default" role="navigation">
                 <div class="container-fluid">
                     <div class="navbar-header">
@@ -13,73 +13,73 @@
                     </ul>
                 </div>
 
-                <div class="tab-content">
-                    <div class="tab-pane" id="home">
-                        <br/>
-                        <div class="row">
-                            <div class="col-md-offset-2 col-md-8">
-                                <div class="form-group">
-                                    <input id="searchCity" type="text" placeholder="Wyszukaj miasto" class="form-control" data-bind="valueUpdate = 'afterkeydown', event: { 'keyup': searchForCities }">
+                <div class="container-fluid">
+                    <div class="tab-content">
+                        <div class="tab-pane" id="home">
+                            <br/>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <div class="form-group">
+                                        <input id="searchCity" type="text" placeholder="Wyszukaj miasto" class="form-control" data-bind="valueUpdate = 'afterkeydown', event: { 'keyup': searchForCities }">
+                                    </div>
+
                                 </div>
+                            </div>
 
+                            <div class="row" id="filtered-elements" data-bind="foreach: filteredCities">
+                                <div class="col-sm-2" data-bind="foreach: $data">
+                                    <p>
+                                        <a data-bind="text: $data.name, css: { 'disable-link': $data.isSelected()}, click: $root.selectCity"></a>
+                                    </p>
+                                </div>
                             </div>
                         </div>
-
-                        <div class="row" id="filtered-elements">
-                            <!-- ko foreach: filteredCities -->
-                            <div class="col-md-2">
-                                <!-- ko foreach: $data -->
-                                   <p>
-                                       <a data-bind="text: $data, click: $root.selectCity"></a>
-                                   </p>
-                                <!-- /ko -->
-                            </div>
-                            <!-- /ko -->
-                        </div>
+                        <div class="tab-pane" id="profile">asdsad</div>
+                        <div class="tab-pane" id="messages">.adsagfsdfg..</div>
                     </div>
-                    <div class="tab-pane" id="profile">asdsad</div>
-                    <div class="tab-pane" id="messages">.adsagfsdfg..</div>
                 </div>
             </nav>
 
             <div id="selected-filters">
-                 <div class="row">
-                     <div class="col-md-1">
-                         <b>Lokalizacje:</b>
-                     </div>
-                     <div class="col-md-11">
-                         <ul data-bind="foreach: selectedCities">
-                             <li data-bind="text: $data"></li>
-                         </ul>
-                     </div>
-                 </div>
-                <div class="row">
-                    <div class="col-md-1">
-                        <b>Produkty:</b>
+                <div class="container-fluid">
+                    <div class="row margin-top-05">
+                        <div class="col-sm-1">
+                            <p>Lokalizacje:</p>
+                        </div>
+                        <div class="col-sm-10">
+                            <ul class="list-inline" data-bind="foreach: selectedCities">
+                                <li data-bind="text: $data.name"></li>
+                            </ul>
+                        </div>
                     </div>
-                    <div class="col-md-11">
+                    <div class="row">
+                        <div class="col-sm-1">
+                            <p>Produkty:</p>
+                        </div>
+                        <div class="col-sm-11">
+                        </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-1">
-                        <b>Sprzedający:</b>
-                    </div>
-                    <div class="col-md-11">
+                    <div class="row">
+                        <div class="col-sm-1">
+                            <p>Sprzedający:</p>
+                        </div>
+                        <div class="col-sm-11">
                             ...
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
     <div class="row margin-top-05" id="map-panel">
-        <div class="col-md-12">
+        <div class="col-sm-12">
             <div id="map-canvas">
 
             </div>
         </div>
     </div>
     <div class="row margin-top-05" id="results-panel">
-        <div class="col-md-12">
+        <div class="col-sm-12">
             <p></p>
 
 

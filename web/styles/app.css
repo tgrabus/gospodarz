@@ -10,11 +10,11 @@ html, body {
 }
 
 #filters-panel {
-    border: thin solid #d3d3d3;
+    /*border: thin solid #d3d3d3;*/
 }
 
 #results-panel {
-    border: thin solid #d3d3d3;
+    /*border: thin solid #d3d3d3;*/
 }
 
 #map-panel {
@@ -32,9 +32,25 @@ html, body {
 .margin-top-30 { margin-top: 3.0em; }
 
 #selected-filters {
-    background-color: #d3d3d3;
+    background-color: #E7E7E7;
+    border-radius: 2px;
 }
 
 #filters-panel .navbar {
     margin-bottom: 0px;
+}
+
+.disable-link {
+    color: gray;
+}
+
+.disable-link:hover
+{
+    text-decoration: none;
+    color: gray;
+}
+
+a:hover {
+    text-decoration: none;
+    cursor: pointer;
 }
