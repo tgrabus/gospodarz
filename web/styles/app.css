@@ -7,6 +7,7 @@ html, body {
 #applicationHost {
     width: 100%;
     height: 100%;
+    background-image: url('../images/background2.jpg');
 }
 
 #filters-panel {
@@ -32,8 +33,10 @@ html, body {
 .margin-top-30 { margin-top: 3.0em; }
 
 #selected-filters {
-    background-color: #E7E7E7;
-    border-radius: 2px;
+    background-color: #F8F8F8;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+    margin-bottom: 0px;
 }
 
 #filters-panel .navbar {
@@ -53,4 +56,14 @@ html, body {
 a:hover {
     text-decoration: none;
     cursor: pointer;
+}
+
+a:focus {
+    outline: 0; /*removes the dotted border*/
+}
+
+.navbar {
+    border-radius: 0px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
 }

@@ -15,7 +15,6 @@ define([
     function ($, ko, strings, CityModel, googleMap, filters) {
 
         var collectionOfCities = filters.getAllCities();
-        var NOT_FOUND_IN_ARRAY = -1;
 
         var home = function () {
             var self = this;

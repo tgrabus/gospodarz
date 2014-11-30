@@ -1,12 +1,13 @@
-from django.conf.urls import patterns, include, url
+from django.conf.urls import url
+from rest_framework.urlpatterns import format_suffix_patterns
 
-from django.contrib import admin
-admin.autodiscover()
+from gospodarz.views import CityView, FarmerView
 
-urlpatterns = patterns('',
-    # Examples:
-    # url(r'^$', 'api.views.home', name='home'),
-    # url(r'^blog/', include('blog.urls')),
 
-    url(r'^admin/', include(admin.site.urls)),
-)
+urlpatterns = [
+    url(r'^cities/$', CityView.CityList.as_view()),
+    url(r'^cities/(?P<name>\w+)$', CityView.CitySubList.as_view()),
+    url(r'^farmers/$', FarmerView.FarmerList.as_view())
+]
+
+urlpatterns = format_suffix_patterns(urlpatterns)
