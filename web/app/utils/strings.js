@@ -10,10 +10,6 @@ define([], function () {
         return (!source || 0 === source.length);
     };
 
-    strings.prototype.capitalize = function(source) {
-        return source.replace(/(?:^|\s)\S/g, function(a) { return a.toUpperCase(); });
-    };
-
     return new strings();
 });
 

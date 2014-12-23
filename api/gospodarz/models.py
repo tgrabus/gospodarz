@@ -3,8 +3,6 @@ from django.db import models
 
 class Farmer(models.Model):
     name = models.CharField(max_length=100)
-    positionX = models.FloatField(null=True, blank=True)
-    positionY = models.FloatField(null=True, blank=True)
 
 
 class Category(models.Model):
@@ -22,3 +20,11 @@ class City(models.Model):
     name = models.CharField(max_length=50)
     positionX = models.FloatField()
     positionY = models.FloatField()
+
+
+class Localization(models.Model):
+    positionX = models.FloatField()
+    positionY = models.FloatField()
+    farmer = models.ForeignKey(Farmer)
+    street = models.CharField(max_length=100, null=True, blank=True)
+    city = models.ForeignKey(City, null=True, blank=True)

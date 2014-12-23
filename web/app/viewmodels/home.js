@@ -10,21 +10,23 @@ define([
         'utils/strings',
         'models/CityModel',
         'services/maps',
-        'services/mock/filters'
+        'services/filters'
     ],
     function ($, ko, strings, CityModel, googleMap, filters) {
-
-        var collectionOfCities = filters.getAllCities();
 
         var home = function () {
             var self = this;
 
+            var collectionOfCities;
+
             self.filteredCities = ko.observableArray([]);
             self.selectedCities = ko.observableArray([]);
+
 
             self.attached = function () {
                 var mapPanel = $("#map-canvas").get(0);
                 googleMap.addMapToCanvas(mapPanel);
+                filters.getAllCities(getAllCitiesCallback);
             };
 
             self.searchForCities = function () {
@@ -36,7 +38,8 @@ define([
                 }
 
                 var filtered = collectionOfCities.filter(function(city) {
-                    return new RegExp(searchedWord, "i").test(city.name);
+                    //return new RegExp(searchedWord, "i").test(city.name); // search in whole word/s
+                    return new RegExp("^" + searchedWord, "i").test(city.name);
                 });
 
                 self.filteredCities(divideArrayBy(filtered, 6));
@@ -52,6 +55,10 @@ define([
                     selectedCities.push(selectedCity);
                     self.selectedCities(selectedCities);
                 }
+            }
+
+            function getAllCitiesCallback(cities) {
+                collectionOfCities = cities;
             }
         };
 
