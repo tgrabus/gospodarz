@@ -22,10 +22,11 @@ define([
             self.filteredCities = ko.observableArray([]);
             self.selectedCities = ko.observableArray([]);
 
+            var mapService = new googleMap();
 
             self.attached = function () {
                 var mapPanel = $("#map-canvas").get(0);
-                googleMap.addMapToCanvas(mapPanel);
+                mapService.addMapToCanvas(mapPanel);
                 filters.getAllCities(getAllCitiesCallback);
             };
 

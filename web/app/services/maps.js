@@ -8,21 +8,70 @@ define(
     [ "async!http://maps.google.com/maps/api/js?key=AIzaSyDnjft0LXNv7VAstx0CYb9GqJ0sfy_GC5U&sensor=true!callback" ],
     function() {
         var self = this;
+		var map_instance;
+        var markers = [];
 
-        return {
+        return function() {
 
-            addMapToCanvas: function( mapCanvas ) {
+            this.addMapToCanvas = function( mapCanvas ) {
                 var myOptions = {
-                    center: new google.maps.LatLng( -34.397, 150.644 ),
-                    zoom: 8,
+                    center: new google.maps.LatLng( 54.469331, 17.023672 ),
+                    zoom: 13,
                     mapTypeId: google.maps.MapTypeId.ROADMAP
                 };
                 var map = new google.maps.Map( mapCanvas, myOptions );
-                self = map;
+                map_instance = map;
+            }
 
-            },
-            refreshMap: function() {
-                google.maps.event.trigger(map, 'resize');
+            this.refreshMap = function() {
+                if(!map_instance) {
+                    return;
+                }
+
+                google.maps.event.trigger(map_instance, 'resize');
+                map_instance.setCenter(new google.maps.LatLng( 54.469331, 17.023672 ));
+            }
+
+            this.trackMapClick = function () {
+                if(!map_instance) {
+                    return;
+                }
+
+                google.maps.event.addListener(map_instance, 'click', function(event) {
+                    addMarker(event.latLng);
+                });
+            }
+
+            function attachMarkersTo(map) {
+                for (var i = 0; i < markers.length; i++) {
+                    markers[i].setMap(map);
+                }
+            }
+
+            function addMarker(position) {
+                var marker = new google.maps.Marker({
+                    position: position,
+                    map: map_instance
+                });
+
+                google.maps.event.addListener(marker, "click", function() {
+                    marker.setMap(null);
+                });
+
+                markers.push(marker);
+            }
+
+            this.detachMarkers = function() {
+                attachMarkersTo(null);
+            }
+
+            this.attachMarkers = function() {
+                attachMarkersTo(map_instance);
+            }
+
+            this.deleteMarkers = function() {
+                detachMarkers();
+                markers = [];
             }
         }
     }
