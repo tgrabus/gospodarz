@@ -6,10 +6,12 @@
 
 define(['knockout', 'plugins/http', 'utils/links', 'models/CityModel'], function (ko, http, links, CityModel) {
 
-    function getAllCities(callback) {
-        http.get(links.getCities, {format: 'json'}).then(function(response){
-
-            var cities = response.map(function(city) {
+    function getAllCities(callback)
+    {
+        http.get( links.getCities, { format: 'json' } ).then( function(response)
+        {
+            var cities = response.map(function(city)
+            {
                 return new CityModel(city);
             });
 

@@ -9,28 +9,28 @@ define([
         'knockout',
         'utils/strings',
         'models/CityModel',
-        'services/maps',
-        'services/filters'
+        'services/map',
+        'services/home-service'
     ],
-    function ($, ko, strings, CityModel, googleMap, filters) {
-
-        var home = function () {
+    function ($, ko, strings, CityModel, MapService, homeService)
+    {
+        var home = function ()
+        {
             var self = this;
-
             var collectionOfCities;
+            var mapService = new MapService();
 
             self.filteredCities = ko.observableArray([]);
             self.selectedCities = ko.observableArray([]);
 
-            var mapService = new googleMap();
-
-            self.attached = function () {
-                var mapPanel = $("#map-canvas").get(0);
-                mapService.addMapToCanvas(mapPanel);
-                filters.getAllCities(getAllCitiesCallback);
+            self.attached = function ()
+            {
+                initMap();
+                homeService.getAllCities(getAllCitiesCallback);
             };
 
-            self.searchForCities = function () {
+            self.searchCities = function ()
+            {
                 var searchedWord = $('#searchCity').val();
 
                 if(strings.isNullOrEmpty(searchedWord)) {
@@ -44,11 +44,11 @@ define([
                 });
 
                 self.filteredCities(divideArrayBy(filtered, 6));
-
                 highlightMatchedText('#filtered-elements a', searchedWord);
             };
 
-            self.selectCity = function(selectedCity) {
+            self.selectCity = function(selectedCity)
+            {
                 var selectedCities = self.selectedCities();
 
                 if(!selectedCity.isSelected()) {
@@ -58,30 +58,42 @@ define([
                 }
             }
 
-            function getAllCitiesCallback(cities) {
+            function initMap()
+            {
+                var canvas = $("#map-canvas").get(0);
+
+                if(canvas) {
+                    mapService.loadMap(canvas, 54.469331, 17.023672);
+                }
+            }
+
+            function getAllCitiesCallback(cities)
+            {
                 collectionOfCities = cities;
+            }
+
+            function highlightMatchedText(source, pattern, color)
+            {
+                $(source).each(function()
+                {
+                    var text = $(this).text();
+                    var highlightText = text.replace(new RegExp('(' + pattern + ')', 'gi'), '<span style="background-color: #d3d3d3">$1</span>');
+                    $(this).html(highlightText);
+                });
+            }
+
+            function divideArrayBy(arraySource, spliceDivider)
+            {
+                var arrays = [];
+                var spliceLength = Math.ceil(arraySource.length / spliceDivider);
+
+                while (arraySource.length > 0) {
+                    arrays.push(arraySource.splice(0, spliceLength));
+                }
+
+                return arrays;
             }
         };
 
         return home;
     });
-
-
-
-function highlightMatchedText(source, pattern, color) {
-    $(source).each(function() {
-        var text = $(this).text();
-        var highlightText = text.replace(new RegExp('(' + pattern + ')', 'gi'), '<span style="background-color: #d3d3d3">$1</span>');
-        $(this).html(highlightText);
-    });
-}
-
-function divideArrayBy(arraySource, spliceDivider) {
-    var arrays = [];
-    var spliceLength = Math.ceil(arraySource.length / spliceDivider);
-
-    while (arraySource.length > 0)
-        arrays.push(arraySource.splice(0, spliceLength));
-
-    return arrays;
-}
