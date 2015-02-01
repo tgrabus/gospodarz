@@ -112,51 +112,60 @@
       <primary-key columns="session_key"/>
       <index name="django_session_de54fa62" unique="true" columns="expire_date"/>
     </table>
-    <table name="gospodarz_category" schema="" catalog="" type="TABLE">
-      <column name="id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
-      <column name="name" sqlType="VARCHAR(100)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
-      <column name="kind" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
-      <primary-key columns="id"/>
-      <exported-key name="#FAKE_gospodarz_product_2" table="gospodarz_product" schema="" catalog="" columns="category_id"/>
-    </table>
-    <table name="gospodarz_city" schema="" catalog="" type="TABLE">
+    <table name="search_city" schema="" catalog="" type="TABLE">
       <column name="id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
       <column name="name" sqlType="VARCHAR(50)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
       <column name="positionX" sqlType="REAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
       <column name="positionY" sqlType="REAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
       <primary-key columns="id"/>
-      <exported-key name="#FAKE_gospodarz_localization_2" table="gospodarz_localization" schema="" catalog="" columns="city_id"/>
+      <exported-key name="#FAKE_search_localization_2" table="search_localization" schema="" catalog="" columns="city_id"/>
     </table>
-    <table name="gospodarz_farmer" schema="" catalog="" type="TABLE">
+    <table name="search_farmer" schema="" catalog="" type="TABLE">
       <column name="id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
       <column name="name" sqlType="VARCHAR(100)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
       <primary-key columns="id"/>
-      <exported-key name="#FAKE_gospodarz_localization_1" table="gospodarz_localization" schema="" catalog="" columns="farmer_id"/>
-      <exported-key name="#FAKE_gospodarz_product_1" table="gospodarz_product" schema="" catalog="" columns="farmer_id"/>
+      <exported-key name="#FAKE_search_farmerproduct_2" table="search_farmerproduct" schema="" catalog="" columns="farmer_id"/>
+      <exported-key name="#FAKE_search_localization_1" table="search_localization" schema="" catalog="" columns="farmer_id"/>
     </table>
-    <table name="gospodarz_localization" schema="" catalog="" type="TABLE">
+    <table name="search_farmerproduct" schema="" catalog="" type="TABLE">
+      <column name="id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="name" sqlType="VARCHAR(100)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <column name="picture" sqlType="VARCHAR(100)" precision="2000000000" scale="10" nullable="true" jdbcType="12"/>
+      <column name="farmer_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="product_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <primary-key columns="id"/>
+      <foreign-key name="#FAKE_search_farmerproduct_1" columns="product_id" ref-table="search_product" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <foreign-key name="#FAKE_search_farmerproduct_2" columns="farmer_id" ref-table="search_farmer" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <index name="search_farmerproduct_9bea82de" unique="true" columns="product_id"/>
+      <index name="search_farmerproduct_2ae6bacd" unique="true" columns="farmer_id"/>
+    </table>
+    <table name="search_localization" schema="" catalog="" type="TABLE">
       <column name="id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
       <column name="positionX" sqlType="REAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
       <column name="positionY" sqlType="REAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
-      <column name="street" sqlType="VARCHAR(100)" precision="2000000000" scale="10" nullable="true" jdbcType="12"/>
       <column name="city_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="true" jdbcType="4"/>
       <column name="farmer_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
       <primary-key columns="id"/>
-      <foreign-key name="#FAKE_gospodarz_localization_1" columns="farmer_id" ref-table="gospodarz_farmer" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
-      <foreign-key name="#FAKE_gospodarz_localization_2" columns="city_id" ref-table="gospodarz_city" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
-      <index name="gospodarz_localization_2ae6bacd" unique="true" columns="farmer_id"/>
-      <index name="gospodarz_localization_c7141997" unique="true" columns="city_id"/>
+      <foreign-key name="#FAKE_search_localization_1" columns="farmer_id" ref-table="search_farmer" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <foreign-key name="#FAKE_search_localization_2" columns="city_id" ref-table="search_city" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <index name="search_localization_2ae6bacd" unique="true" columns="farmer_id"/>
+      <index name="search_localization_c7141997" unique="true" columns="city_id"/>
     </table>
-    <table name="gospodarz_product" schema="" catalog="" type="TABLE">
+    <table name="search_product" schema="" catalog="" type="TABLE">
       <column name="id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
       <column name="name" sqlType="VARCHAR(100)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
-      <column name="category_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
-      <column name="farmer_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="picture" sqlType="VARCHAR(100)" precision="2000000000" scale="10" nullable="true" jdbcType="12"/>
+      <column name="product_category_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
       <primary-key columns="id"/>
-      <foreign-key name="#FAKE_gospodarz_product_1" columns="farmer_id" ref-table="gospodarz_farmer" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
-      <foreign-key name="#FAKE_gospodarz_product_2" columns="category_id" ref-table="gospodarz_category" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
-      <index name="gospodarz_products_2ae6bacd" unique="true" columns="farmer_id"/>
-      <index name="gospodarz_products_b583a629" unique="true" columns="category_id"/>
+      <foreign-key name="#FAKE_search_product_1" columns="product_category_id" ref-table="search_productcategory" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <exported-key name="#FAKE_search_farmerproduct_1" table="search_farmerproduct" schema="" catalog="" columns="product_id"/>
+      <index name="search_product_1d95dfdf" unique="true" columns="product_category_id"/>
+    </table>
+    <table name="search_productcategory" schema="" catalog="" type="TABLE">
+      <column name="id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="name" sqlType="VARCHAR(50)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <primary-key columns="id"/>
+      <exported-key name="#FAKE_search_product_1" table="search_product" schema="" catalog="" columns="product_category_id"/>
     </table>
     <table name="sqlite_sequence" schema="" catalog="" type="TABLE">
       <column name="name" sqlType="" precision="2000000000" scale="10" nullable="true" jdbcType="12"/>

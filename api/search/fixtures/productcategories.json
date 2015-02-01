@@ -1,0 +1,30 @@
+[
+  {
+    "model": "search.ProductCategory",
+    "pk": 1,
+    "fields": {
+      "name": "Owoce"
+    }
+  },
+  {
+    "model": "search.ProductCategory",
+    "pk": 2,
+    "fields": {
+      "name": "Warzywa"
+    }
+  },
+  {
+    "model": "search.ProductCategory",
+    "pk": 3,
+    "fields": {
+      "name": "Mięso"
+    }
+  },
+  {
+    "model": "search.ProductCategory",
+    "pk": 4,
+    "fields": {
+      "name": "Nabiał"
+    }
+  }
+]
