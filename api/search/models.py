@@ -4,6 +4,9 @@ from django.db import models
 class Farmer(models.Model):
     name = models.CharField(max_length=100)
 
+    def __str__(self):
+        return self.name
+
 
 class ProductCategory(models.Model):
     name = models.CharField(max_length=50)
@@ -26,6 +29,9 @@ class FarmerProduct(models.Model):
     farmer = models.ForeignKey(Farmer)
     product = models.ForeignKey(Product)
     picture = models.ImageField(null=True, blank=True, upload_to='products')
+
+    def __str__(self):
+        return self.name
 
 
 class City(models.Model):

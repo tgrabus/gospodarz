@@ -37,6 +37,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'search',
+    'account',
     'corsheaders',
     'rest_framework'
 )
@@ -94,7 +95,9 @@ REST_FRAMEWORK = {
     'DEFAULT_RENDERER_CLASSES': (
         'rest_framework.renderers.UnicodeJSONRenderer',
         'rest_framework.renderers.BrowsableAPIRenderer',
-    )
+    ),
+
+    'UPLOADED_FILES_USE_URL': True
 }
 
 CORS_ORIGIN_ALLOW_ALL = True
