@@ -10,6 +10,15 @@ define([], function ()
         return (!source || 0 === source.length);
     };
 
+    strings.prototype.format = function(text, placeholders) {
+        var s = text;
+        for(var propertyName in placeholders) {
+            var re = new RegExp('{' + propertyName + '}', 'gm');
+            s = s.replace(re, placeholders[propertyName]);
+        }
+        return s;
+    };
+
     return new strings();
 });
 

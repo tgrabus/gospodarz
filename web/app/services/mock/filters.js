@@ -4,7 +4,7 @@
  * Time: 20:10
  */
 
-define(['models/CityModel'], function (CityModel) {
+define(['models/CitySelectModel'], function (CitySelectModel) {
 
     function getAllCities() {
         var cities = [
@@ -707,7 +707,7 @@ define(['models/CityModel'], function (CityModel) {
         });
 
         return sortedCitiesByName.map(function(city) {
-            return new CityModel(city);
+            return new CitySelectModel(city);
         });
     }
 

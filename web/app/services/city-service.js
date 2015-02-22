@@ -4,7 +4,7 @@
  * Time: 20:07
  */
 
-define(['knockout', 'plugins/http', 'utils/links', 'models/CityModel'], function (ko, http, links, CityModel) {
+define(['knockout', 'plugins/http', 'utils/links', 'models/CitySelectModel'], function (ko, http, links, CitySelectModel) {
 
     function getAllCities(callback)
     {
@@ -12,7 +12,7 @@ define(['knockout', 'plugins/http', 'utils/links', 'models/CityModel'], function
         {
             var cities = response.map(function(city)
             {
-                return new CityModel(city);
+                return new CitySelectModel(city);
             });
 
             cities = cities.sort(function (a, b) {
@@ -22,6 +22,8 @@ define(['knockout', 'plugins/http', 'utils/links', 'models/CityModel'], function
             callback(cities);
         })
     }
+
+
 
     return {
         getAllCities: getAllCities

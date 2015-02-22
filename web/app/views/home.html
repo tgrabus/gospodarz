@@ -8,51 +8,16 @@
                     </div>
                     <ul class="nav navbar-nav nav-pills">
                         <li class="active"><a href="#locations" role="tab" data-toggle="tab">lokalizacje</a></li>
-                        <li><a href="#warzywa" role="tab" data-toggle="tab">warzywa</a></li>
-                        <li><a href="#owoce" role="tab" data-toggle="tab">owoce</a></li>
+                        <li><a href="#vegetables" role="tab" data-toggle="tab" data-bind="click: activateVegetableTab">warzywa</a></li>
+                        <li><a href="#fruits" role="tab" data-toggle="tab" data-bind="click: activateFruitTab">owoce</a></li>
                     </ul>
                 </div>
 
                 <div class="container-fluid">
                     <div class="tab-content">
-                        <div class="tab-pane active" id="locations">
-                            <br/>
-                            <form class="form-horizontal" role="form">
-                                <div class="form-group">
-                                    <div class="col-md-3">
-                                        <input id="searchCity"
-                                               type="text"
-                                               placeholder="Wyszukaj miejscowość"
-                                               class="form-control"
-                                               data-bind="valueUpdate: 'afterkeydown', event: { 'keyup': searchCities }">
-                                    </div>
-                                    <div class="checkbox col-md-2">
-                                        <label>
-                                            <input type="checkbox" value="">
-                                            Szukaj wszędzie
-                                        </label>
-                                    </div>
-                                    <div class="checkbox col-md-2">
-                                        <label>
-                                            <input type="checkbox" value="">
-                                            Najbliżej mnie
-                                        </label>
-                                    </div>
-                                </div>
-                            </form>
-
-                            <div class="row" id="filtered-elements" data-bind="foreach: filteredCities">
-                                <div class="col-md-2" data-bind="foreach: $data">
-                                    <p>
-                                        <a data-bind="text: $data.name, css: { 'disable-link': $data.isSelected()}, click: $root.selectCity"></a>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="tab-pane" id="warzywa">
-
-                        </div>
-                        <div class="tab-pane" id="owoce"></div>
+                        <div class="tab-pane active" id="locations" data-bind="compose: locationBrowser"></div>
+                        <div class="tab-pane" id="vegetables" data-bind="compose: vegetableBrowser"></div>
+                        <div class="tab-pane" id="fruits" data-bind="compose: fruitBrowser"></div>
                     </div>
                 </div>
             </nav>
@@ -64,7 +29,7 @@
                         <p>Lokalizacje:</p>
                     </div>
                     <div class="col-md-10">
-                        <ul class="list-inline" data-bind="foreach: selectedCities">
+                        <ul class="list-inline" data-bind="foreach: locationBrowser().selectedCities">
                             <li data-bind="text: $data.name"></li>
                         </ul>
                     </div>
@@ -74,6 +39,12 @@
                         <p>Warzywa:</p>
                     </div>
                     <div class="col-md-11">
+                        <ul class="list-inline" data-bind="foreach: vegetableBrowser().selectedProducts">
+                            <li class="delete-selected-product" data-toggle="tooltip" data-placement="top" title="Usuń">
+                                <img width="24px" height="24px" data-bind="attr:{src: $data.image}" />
+                                <span data-bind="text : $data.name"> </span>
+                            </li>
+                        </ul>
                     </div>
                 </div>
                 <div class="row">
@@ -81,6 +52,12 @@
                         <p>Owoce:</p>
                     </div>
                     <div class="col-md-11">
+                        <ul class="list-inline" data-bind="foreach: fruitBrowser().selectedProducts">
+                            <li class="delete-selected-product" data-toggle="tooltip" data-placement="top" title="Usuń">
+                                <img width="24px" height="24px" data-bind="attr:{src: $data.image}" />
+                                <span data-bind="text : $data.name"> </span>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>

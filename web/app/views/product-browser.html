@@ -1,0 +1,12 @@
+<div>
+    <br/>
+    <div class="row" data-bind="foreach: filteredProducts">
+        <div class="col-md-2" data-bind="foreach: {data:$data, as: 'product'}">
+            <p>
+                <img width="32px" height="32px" data-bind="attr:{src: product.image}" />
+                <a data-bind="text: product.name, css: { 'disable-link': product.isSelected()}, click: $root.selectProduct"></a>
+                <!--<span data-bind="text : product.name"> </span>-->
+            </p>
+        </div>
+    </div>
+</div>
