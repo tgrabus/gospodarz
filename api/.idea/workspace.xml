@@ -26,22 +26,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bef69a87-bcf0-43b2-a1c5-74ee580010fd" name="Default" comment="">
-      <change type="MOVED" beforePath="C:\Users\Tomek\Documents\GitHub\gospodarz\web\app\models\CitySelectModel.js" afterPath="$PROJECT_DIR$/../web/app/models/select-city-model.js" />
-      <change type="MOVED" beforePath="C:\Users\Tomek\Documents\GitHub\gospodarz\web\app\models\LocalizationModel.js" afterPath="$PROJECT_DIR$/../web/app/models/location-model.js" />
-      <change type="MOVED" beforePath="C:\Users\Tomek\Documents\GitHub\gospodarz\web\app\models\ProductCategory.js" afterPath="$PROJECT_DIR$/../web/app/models/product-category.js" />
-      <change type="MOVED" beforePath="C:\Users\Tomek\Documents\GitHub\gospodarz\web\app\models\ProductSelectModel.js" afterPath="$PROJECT_DIR$/../web/app/models/select-product-model.js" />
-      <change type="MOVED" beforePath="C:\Users\Tomek\Documents\GitHub\gospodarz\web\app\viewmodels\farmer-account.js" afterPath="$PROJECT_DIR$/../web/app/viewmodels/account/home.js" />
-      <change type="MOVED" beforePath="C:\Users\Tomek\Documents\GitHub\gospodarz\web\app\viewmodels\home.js" afterPath="$PROJECT_DIR$/../web/app/viewmodels/browser/home.js" />
-      <change type="MOVED" beforePath="C:\Users\Tomek\Documents\GitHub\gospodarz\web\app\viewmodels\location-browser.js" afterPath="$PROJECT_DIR$/../web/app/viewmodels/browser/locations.js" />
-      <change type="MOVED" beforePath="C:\Users\Tomek\Documents\GitHub\gospodarz\web\app\viewmodels\product-browser.js" afterPath="$PROJECT_DIR$/../web/app/viewmodels/browser/products.js" />
-      <change type="MOVED" beforePath="C:\Users\Tomek\Documents\GitHub\gospodarz\web\app\views\farmer-account.html" afterPath="$PROJECT_DIR$/../web/app/views/account/home.html" />
-      <change type="MOVED" beforePath="C:\Users\Tomek\Documents\GitHub\gospodarz\web\app\views\home.html" afterPath="$PROJECT_DIR$/../web/app/views/browser/home.html" />
-      <change type="MOVED" beforePath="C:\Users\Tomek\Documents\GitHub\gospodarz\web\app\views\location-browser.html" afterPath="$PROJECT_DIR$/../web/app/views/browser/locations.html" />
-      <change type="MOVED" beforePath="C:\Users\Tomek\Documents\GitHub\gospodarz\web\app\views\product-browser.html" afterPath="$PROJECT_DIR$/../web/app/views/browser/products.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../web/app/services/city-service.js" afterPath="$PROJECT_DIR$/../web/app/services/city-service.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../web/app/services/mock/filters.js" afterPath="$PROJECT_DIR$/../web/app/services/mock/filters.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../web/app/services/product-service.js" afterPath="$PROJECT_DIR$/../web/app/services/product-service.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../web/app/viewmodels/shell.js" afterPath="$PROJECT_DIR$/../web/app/viewmodels/shell.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../web/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../web/.idea/workspace.xml" />
     </list>
@@ -221,6 +205,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -283,7 +268,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
     </panes>
   </component>
@@ -722,6 +706,7 @@
       <workItem from="1424536996978" duration="1242000" />
       <workItem from="1424599926554" duration="7298000" />
       <workItem from="1424635842066" duration="606000" />
+      <workItem from="1424638058616" duration="58000" />
     </task>
     <task id="LOCAL-00001" summary="added product pictures">
       <created>1422805239878</created>
@@ -733,7 +718,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="134514000" />
+    <option name="totallyTimeSpent" value="134572000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -747,7 +732,6 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.34743875" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2814238" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32925472" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18603411" sideWeight="0.67021275" order="0" side_tool="false" content_ui="combo" />
@@ -756,15 +740,16 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3986637" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="TeamCity" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3986637" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2814238" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32962137" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
