@@ -4,7 +4,7 @@
 
 define(['knockout'], function(ko)
 {
-    var citySelectModel = function(city)
+    var productCategory = function(city)
     {
         this.name = city.name;
         this.isSelected = ko.observable(false);
@@ -12,6 +12,6 @@ define(['knockout'], function(ko)
         this.positionY = city.positionY
     };
 
-    return citySelectModel;
+    return productCategory;
 })
 

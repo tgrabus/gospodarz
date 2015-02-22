@@ -13,9 +13,8 @@ define(function (require)
         activate: function ()
         {
             router.map([
-                { route: '', title: 'Start', moduleId: 'viewmodels/home', nav: true },
-                { route: 'account', title: 'Konto', moduleId: 'viewmodels/farmer-account', nav: true },
-                { route: '', title: 'Kolejny inny', moduleId: 'viewmodels/home', nav: true }
+                { route: '', title: 'Start', moduleId: 'viewmodels/browser/home', nav: true },
+                { route: 'account', title: 'Konto', moduleId: 'viewmodels/account/home', nav: true }
             ]).buildNavigationModel();
 
             return router.activate();

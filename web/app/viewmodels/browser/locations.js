@@ -6,10 +6,9 @@ define([
         'knockout',
         'utils/strings',
         'utils/arrays',
-        'models/CitySelectModel',
         'services/city-service'
     ],
-    function (ko, strings, arrays, CityModel, cityService)
+    function (ko, strings, arrays, cityService)
     {
         var locationBrowser = function ()
         {

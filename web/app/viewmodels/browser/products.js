@@ -5,10 +5,10 @@
 define([
         'knockout',
         'utils/arrays',
-        'models/ProductCategory',
+        'models/product-category',
         'services/product-service'
     ],
-    function (ko, arrays, CategoryEnum, productService)
+    function (ko, arrays, productCategory, productService)
     {
         var productBrowser = function ()
         {
@@ -25,7 +25,7 @@ define([
 
             self.loadProducts = function (category)
             {
-                if(CategoryEnum.validate(category)) {
+                if(productCategory.validate(category)) {
                     productService.getProducts(category, getProductsCallback)
                 }
             }

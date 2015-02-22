@@ -4,7 +4,7 @@
  * Time: 20:10
  */
 
-define(['models/CitySelectModel'], function (CitySelectModel) {
+define(['models/select-city-model'], function (CitySelectModel) {
 
     function getAllCities() {
         var cities = [

@@ -2,7 +2,7 @@
  * Created by tgrabus on 2015-02-14.
  */
 
-define(['knockout', 'plugins/http', 'utils/strings', 'utils/links', 'models/ProductSelectModel'], function (ko, http, strings, links, ProductSelectModel) {
+define(['knockout', 'plugins/http', 'utils/strings', 'utils/links', 'models/select-product-model'], function (ko, http, strings, links, ProductSelectModel) {
 
     function getProducts(category, callback)
     {

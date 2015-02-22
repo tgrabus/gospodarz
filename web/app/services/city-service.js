@@ -4,7 +4,7 @@
  * Time: 20:07
  */
 
-define(['knockout', 'plugins/http', 'utils/links', 'models/CitySelectModel'], function (ko, http, links, CitySelectModel) {
+define(['knockout', 'plugins/http', 'utils/links', 'models/select-city-model'], function (ko, http, links, CitySelectModel) {
 
     function getAllCities(callback)
     {

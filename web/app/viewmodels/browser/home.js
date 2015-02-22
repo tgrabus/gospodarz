@@ -8,11 +8,11 @@ define([
         'bootstrap',
         'knockout',
         'services/map',
-        'viewmodels/location-browser',
-        'viewmodels/product-browser',
-        'models/ProductCategory',
+        'viewmodels/browser/locations',
+        'viewmodels/browser/products',
+        'models/product-category',
     ],
-    function ($, ko, MapService, LocationBrowser, ProductBrowser, CategoryEnum)
+    function ($, ko, MapService, LocationBrowser, ProductBrowser, productCategory)
     {
         var home = function ()
         {
@@ -31,12 +31,12 @@ define([
 
             self.activateVegetableTab = function()
             {
-                self.vegetableBrowser().loadProducts(CategoryEnum.VEGETABLE);
+                self.vegetableBrowser().loadProducts(productCategory.VEGETABLE);
             }
 
             self.activateFruitTab = function()
             {
-                self.fruitBrowser().loadProducts(CategoryEnum.FRUIT);
+                self.fruitBrowser().loadProducts(productCategory.FRUIT);
             }
 
             function initMap()
