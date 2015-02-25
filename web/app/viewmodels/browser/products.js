@@ -47,8 +47,6 @@ define([
                 self.filteredProducts(arrays.divideArrayBy(products, 6));
                 self.isLoaded = true;
             }
-
-
         };
 
         return productBrowser;
