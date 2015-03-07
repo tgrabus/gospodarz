@@ -67,3 +67,33 @@ a:focus {
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
 }
+
+.product-item {
+    background-color: #ffffff;
+    border-color: #E7E7E7;
+    border-width: thin;
+    border-style: solid;
+}
+
+.product-image {
+    float: left;
+}
+
+.product-image > img {
+    width: 100px;
+    height: 100px;
+}
+
+.product-desc {
+    width: 300px;
+    height: 100px;
+}
+
+.product-desc > .title, .product-desc > .desc {
+    margin: 0;
+    padding: 0;
+}
+
+.top-buffer {
+    margin-top:20px;
+}

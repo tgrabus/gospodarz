@@ -8,28 +8,16 @@
                     </div>
                     <ul class="nav navbar-nav nav-pills">
                         <li class="active"><a href="#products" role="tab" data-toggle="tab">produkty</a></li>
-                        <li><a href="#localizations" role="tab" data-toggle="tab" data-bind="click: initLocalizationTab">lokalizacje</a></li>
+                        <li><a href="#localizations" role="tab" data-toggle="tab" data-bind="click: activateLocationTab">lokalizacje</a></li>
                         <li><a href="#settings" role="tab" data-toggle="tab">ustawienia</a></li>
                     </ul>
                 </div>
 
                 <div class="container-fluid" >
                     <div class="tab-content" >
-
-                        <div class="tab-pane active" id="products" data-bind="compose:">
-                        </div>
-                        <div class="tab-pane" id="localizations" >
-                            <div id="map-canvas"></div>
-							
-							<h4>Wybrane lokalizacje:</h4>
-
-                            <!-- ko foreach: selectedLocalizations() -->
-                                <h5 data-bind="text: $data"></h5>
-                            <!-- /ko -->
-
-                        </div>
-                        <div class="tab-pane" id="settings">
-                        </div>
+                        <div class="tab-pane active" id="products" data-bind="compose: productManager"></div>
+                        <div class="tab-pane" id="localizations" data-bind="compose: locationManager"></div>
+                        <div class="tab-pane" id="settings"></div>
                     </div>
                 </div>
             </nav>

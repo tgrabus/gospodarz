@@ -25,7 +25,7 @@ define([
 
             self.loadProducts = function (category)
             {
-                if(productCategory.validate(category)) {
+                if(self.isLoaded === false && productCategory.validate(category)) {
                     productService.getProducts(category, getProductsCallback)
                 }
             }

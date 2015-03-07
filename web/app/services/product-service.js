@@ -2,7 +2,8 @@
  * Created by tgrabus on 2015-02-14.
  */
 
-define(['knockout', 'plugins/http', 'utils/strings', 'utils/links', 'models/select-product-model'], function (ko, http, strings, links, ProductSelectModel) {
+define(['knockout', 'plugins/http', 'utils/strings', 'utils/links', 'models/select-product-model', 'models/farmer-product-model'],
+    function (ko, http, strings, links, ProductSelectModel, FarmerProductModel) {
 
     function getProducts(category, callback)
     {
@@ -20,12 +21,30 @@ define(['knockout', 'plugins/http', 'utils/strings', 'utils/links', 'models/sele
             });
 
             callback(products);
-        })
+        });
     }
 
+    function getFarmerProducts(category, farmer, callback)
+    {
+        var url = strings.format(links.getFarmerProducts, { farmer: farmer, category: category });
 
+        http.get( url, { format: 'json' } ).then( function(response)
+        {
+            var farmerProducts = response.map(function(farmerProduct)
+            {
+                return new FarmerProductModel(farmerProduct);
+            });
+
+            farmerProducts = farmerProducts.sort(function (a, b) {
+                return a.name.toLowerCase().localeCompare(b.name.toLowerCase());
+            });
+
+            callback(farmerProducts);
+        });
+    }
 
     return {
-        getProducts: getProducts
+        getProducts: getProducts,
+        getFarmerProducts: getFarmerProducts
     };
 });

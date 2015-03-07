@@ -3,19 +3,38 @@
  */
 
 define([
-        'knockout'
+        'knockout',
+        'models/product-category',
+        'services/product-service'
     ],
-    function (ko)
+    function (ko, productCategory, productService)
+
     {
-        var products = function ()
+        var productManager = function ()
         {
             var self = this;
+            var vegetables = ko.observable([]);
+            var fruits = ko.observable([]);
 
             self.attached = function ()
             {
             };
+
+            self.getVegetables = function(farmer)
+            {
+                productService.getFarmerProducts(productCategory.VEGETABLE, farmer, function(products) {
+
+                });
+            };
+
+            self.getFruits = function(farmer)
+            {
+                productService.getFarmerProducts(productCategory.VEGETABLE, farmer, function(products) {
+
+                });
+            };
         };
 
-        return products;
+        return productManager;
     }
 )

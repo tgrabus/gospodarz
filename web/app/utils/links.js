@@ -10,6 +10,7 @@ define([], function ()
     links.prototype.getCities = apiUrl + 'cities'
     links.prototype.getFilteredCities = apiUrl + 'cities/filter/{0}'
     links.prototype.getProducts = apiUrl + 'products/categories/{category}'
+    links.prototype.getFarmerProducts = apiUrl + 'farmers/{farmer}/products/categories/{category}'
 
     return new links();
 });
