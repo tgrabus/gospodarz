@@ -22,14 +22,14 @@ define([
 
             self.getVegetables = function(farmer)
             {
-                productService.getFarmerProducts(productCategory.VEGETABLE, farmer, function(products) {
+                productService.getFarmerProductsByCategory(productCategory.VEGETABLE, farmer, function(products) {
 
                 });
             };
 
             self.getFruits = function(farmer)
             {
-                productService.getFarmerProducts(productCategory.VEGETABLE, farmer, function(products) {
+                productService.getFarmerProductsByCategory(productCategory.VEGETABLE, farmer, function(products) {
 
                 });
             };

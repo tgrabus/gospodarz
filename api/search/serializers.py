@@ -16,18 +16,17 @@ class ProductCategorySerializer(serializers.ModelSerializer):
 
 
 class ProductSerializer(serializers.ModelSerializer):
-    picture_url = serializers.SerializerMethodField('get_picture_url')
+    picture_url = serializers.SerializerMethodField()
 
     def get_picture_url(self, obj):
         return self.context['request'].build_absolute_uri(obj.picture.url)
 
     class Meta:
         model = Product
-        fields = ('name', 'product_category', 'picture_url')
+        fields = ('id', 'name', 'product_category', 'picture_url')
 
 
 class CitySerializer(serializers.ModelSerializer):
     class Meta:
         model = City
         fields = ('name', 'positionX', 'positionY')
-

@@ -38,13 +38,20 @@ class City(models.Model):
     name = models.CharField(max_length=50)
     positionX = models.FloatField()
     positionY = models.FloatField()
+    sinXRad = models.FloatField(default=0)
+    sinYRad = models.FloatField(default=0)
+    cosXRad = models.FloatField(default=0)
+    cosYRad = models.FloatField(default=0)
 
     def __str__(self):
         return self.name
 
 
 class Localization(models.Model):
-    positionX = models.FloatField()
-    positionY = models.FloatField()
+    latitude = models.FloatField()
+    longitude = models.FloatField()
+    sin_latitude = models.FloatField(default=0)
+    sin_longitude = models.FloatField(default=0)
+    cos_latitude = models.FloatField(default=0)
+    cos_longitude = models.FloatField(default=0)
     farmer = models.ForeignKey(Farmer)
-    city = models.ForeignKey(City, null=True, blank=True)

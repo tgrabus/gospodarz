@@ -8,44 +8,39 @@ define([
         'models/product-category',
         'services/product-service'
     ],
-    function (ko, arrays, productCategory, productService)
+    function (ko, arrays, productCategory,  productService)
     {
         var productBrowser = function ()
         {
             var self = this;
-            var collectionOfProducts;
-
             self.filteredProducts = ko.observableArray([]);
-            self.selectedProducts = ko.observableArray([]);
-            self.isLoaded = false;
+
+            self.selectedProducts = ko.computed(function() {
+               return self.filteredProducts().filter(function(product) {
+                   return product.isSelected();
+               })
+            });
+
+            self.title = "Wybierz produkty"
 
             self.attached = function ()
             {
+                self.loadProducts();
             };
 
-            self.loadProducts = function (category)
+            self.loadProducts = function ()
             {
-                if(self.isLoaded === false && productCategory.validate(category)) {
-                    productService.getProducts(category, getProductsCallback)
-                }
+                productService.getProducts(getProductsCallback)
             }
 
-            self.selectProduct = function(selectedProduct)
+            self.selectProduct = function(product)
             {
-                var selectedProducts = self.selectedProducts();
-
-                if(!selectedProduct.isSelected()) {
-                    selectedProduct.isSelected(true);
-                    selectedProducts.push(selectedProduct);
-                    self.selectedProducts(selectedProducts);
-                }
+                product.isSelected(!product.isSelected());
             }
 
             function getProductsCallback(products)
             {
-                collectionOfProducts = products;
-                self.filteredProducts(arrays.divideArrayBy(products, 6));
-                self.isLoaded = true;
+                self.filteredProducts(products);
             }
         };
 

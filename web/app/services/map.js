@@ -68,20 +68,21 @@ define(
                 }
             }
 
-            this.addMarker = function(position)
+            this.addMarker = function(latitude, longitude)
             {
                 if(!map_instance) {
                     return;
                 }
 
+
                 var newMarker = new google.maps.Marker({
-                    position: position,
+                    position: new google.maps.LatLng( latitude, longitude ),
                     map: map_instance
                 });
 
                 markers.push(newMarker);
                 return newMarker;
-            }
+            };
 
             this.removeMarker = function(marker)
             {
@@ -89,6 +90,12 @@ define(
                 var index = markers.indexOf(marker);
                 if(index != -1) {
                     markers.splice(index, 1);
+                }
+            }
+
+            this.removeAllMarkers = function() {
+                while (markers.length > 0) {
+                    markers.pop().setMap(null);
                 }
             }
         }

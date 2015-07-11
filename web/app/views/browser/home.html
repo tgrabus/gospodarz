@@ -1,97 +1,33 @@
 <div>
-    <div class="row" id="filters-panel">
-        <div class="col-md-12">
-            <nav class="navbar navbar-default" role="navigation">
-                <div class="container-fluid">
-                    <div class="navbar-header">
-                        <a class="navbar-brand">Określ:</a>
-                    </div>
-                    <ul class="nav navbar-nav nav-pills">
-                        <li class="active"><a href="#locations" role="tab" data-toggle="tab">lokalizacje</a></li>
-                        <li><a href="#vegetables" role="tab" data-toggle="tab" data-bind="click: activateVegetableTab">warzywa</a></li>
-                        <li><a href="#fruits" role="tab" data-toggle="tab" data-bind="click: activateFruitTab">owoce</a></li>
-                    </ul>
-                </div>
-
-                <div class="container-fluid">
-                    <div class="tab-content">
-                        <div class="tab-pane active" id="locations" data-bind="compose: locationBrowser"></div>
-                        <div class="tab-pane" id="vegetables" data-bind="compose: vegetableBrowser"></div>
-                        <div class="tab-pane" id="fruits" data-bind="compose: fruitBrowser"></div>
-                    </div>
-                </div>
-            </nav>
-
-            <div class="container-fluid" id="selected-filters">
-                <h4>Twój wybór:</h4>
+    <div id="header">
+        <div class="row alert alert-success" style="margin-bottom: 0px;">
+            <div class="col-md-7">
                 <div class="row">
                     <div class="col-md-1">
-                        <p>Lokalizacje:</p>
+                        <img src="images/location.jpg" alt="" class="img-responsive img-rounded">
                     </div>
-                    <div class="col-md-10">
-                        <ul class="list-inline" data-bind="foreach: locationBrowser().selectedCities">
-                            <li data-bind="text: $data.name"></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="row">
                     <div class="col-md-1">
-                        <p>Warzywa:</p>
+                        <img src="images/location.jpg" alt="" class="img-responsive img-rounded">
                     </div>
-                    <div class="col-md-11">
-                        <ul class="list-inline" data-bind="foreach: vegetableBrowser().selectedProducts">
-                            <li class="delete-selected-product" data-toggle="tooltip" data-placement="top" title="Usuń">
-                                <img width="24px" height="24px" data-bind="attr:{src: $data.image}" />
-                                <span data-bind="text : $data.name"> </span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="row">
                     <div class="col-md-1">
-                        <p>Owoce:</p>
+                        <img src="images/location.jpg" alt="" class="img-responsive img-rounded">
                     </div>
-                    <div class="col-md-11">
-                        <ul class="list-inline" data-bind="foreach: fruitBrowser().selectedProducts">
-                            <li class="delete-selected-product" data-toggle="tooltip" data-placement="top" title="Usuń">
-                                <img width="24px" height="24px" data-bind="attr:{src: $data.image}" />
-                                <span data-bind="text : $data.name"> </span>
-                            </li>
-                        </ul>
+                    <div class="col-md-9">
+                        <div class="font-size-3">
+                            <strong data-bind="text: title"></strong>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="row" id="map-panel">
-        <div class="col-md-12">
-            <div id="map-canvas">
-
-            </div>
-        </div>
-    </div>
-    <div class="row" id="results-panel">
-        <div class="col-md-12">
-            <p></p>
-
-
-            <div class="list-group" id="accord">
-                <li data-toggle="collapse" data-parent="#accord" data-target="#test" class="list-group-item">
-                    <h4 class="list-group-item-heading">List group item heading</h4>
-
-                    <div class="collapse" id="test">
-                        <p class="list-group-item-text">adasdadasd</p>
-                    </div>
-                </li>
-                <li data-toggle="collapse" data-parent="#accord" data-target="#test2" class="list-group-item">
-                    <h4 class="list-group-item-heading">List group2 item heading</h4>
-
-                    <div class="collapse" id="test2">
-                        <p class="list-group-item-text">asdasdas</p>
-                    </div>
-                </li>
-            </div>
+    <div id="fullpage">
+        <div id="step1" class="section" data-bind="compose: categoryViewModel"></div>
+        <div id="step2" class="section" data-bind="compose: productViewModel"></div>
+        <div id="step3" class="section" data-bind="compose: locationViewModel"></div>
+        <div class="section">
+            <div id="map-canvas"></div>
         </div>
     </div>
 </div>

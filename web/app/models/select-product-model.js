@@ -6,6 +6,7 @@ define(['knockout'], function(ko)
 {
     var productSelectModel = function(product)
     {
+        this.id = product.id;
         this.name = product.name;
         this.image = product.picture_url;
         this.isSelected = ko.observable(false);

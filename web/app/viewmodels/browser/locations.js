@@ -6,64 +6,88 @@ define([
         'knockout',
         'utils/strings',
         'utils/arrays',
-        'services/city-service'
+        'services/map',
+        'services/geocoder',
+        'services/city-service',
+        'services/localization-service',
+        'typeahead',
+        'bloodhound'
     ],
-    function (ko, strings, arrays, cityService)
+    function (ko, strings, arrays, MapService, geocoderService, cityService, localizationService, Typeahead, Bloodhound)
     {
         var locationBrowser = function ()
         {
             var self = this;
             var collectionOfCities;
 
-            self.filteredCities = ko.observableArray([]);
-            self.selectedCities = ko.observableArray([]);
+            self.selectedProducts = ko.observable();
+            self.foundFarmers = ko.observable();
+
+            var mapService = new MapService();
+
+            self.title = "Wybierz lokalizacje"
 
             self.attached = function ()
             {
                 cityService.getAllCities(getAllCitiesCallback);
+                initMap();
             };
 
-            self.searchCities = function ()
+            self.search = function(latlng) {
+                localizationService.searchNearestFarmers(latlng, self.selectedProducts(), searchNearestFarmersCallback);
+            }
+
+            function initMap()
             {
-                var searchedWord = $('#searchCity').val();
+                var canvas = $("#select-location-on-map").get(0);
 
-                if(strings.isNullOrEmpty(searchedWord)) {
-                    self.filteredCities([]);
-                    return;
+                if(canvas) {
+                    mapService.loadMap(canvas, 54.469331, 17.023672);
                 }
+            }
 
-                var filtered = collectionOfCities.filter(function(city) {
-                    //return new RegExp(searchedWord, "i").test(city.name); // search in whole word/s
-                    return new RegExp("^" + searchedWord, "i").test(city.name);
+            function initCityAutoComplete(cities) {
+
+                var bloodhound = new Bloodhound({
+                    datumTokenizer: Bloodhound.tokenizers.obj.whitespace('value'),
+                    queryTokenizer: Bloodhound.tokenizers.whitespace,
+                    local: $.map(cities, function(city) { return { value: city.name }; })
                 });
 
-                self.filteredCities(arrays.divideArrayBy(filtered, 6));
-                highlightMatchedText('#filtered-cities a', searchedWord);
-            };
+                bloodhound.initialize();
+
+                $('#bloodhound .typeahead').typeahead({
+                        hint: true,
+                        highlight: true,
+                        minLength: 1
+                    },
+                    {
+                        name: 'cities',
+                        displayKey: 'value',
+                        source: bloodhound.ttAdapter()
+                    }).on('typeahead:selected', function (obj, datum) {
+                        self.selectCity(datum.value)
+                    });
+            }
 
             self.selectCity = function(selectedCity)
             {
-                var selectedCities = self.selectedCities();
-
-                if(!selectedCity.isSelected()) {
-                    selectedCity.isSelected(true);
-                    selectedCities.push(selectedCity);
-                    self.selectedCities(selectedCities);
-                }
+                geocoderService.decodeLatLng(selectedCity, function(latlng) {
+                    mapService.setCenter(latlng.lat(), latlng.lng());
+                    self.search(latlng);
+                });
             }
 
             function getAllCitiesCallback(cities)
             {
                 collectionOfCities = cities;
+                initCityAutoComplete(cities);
             }
 
-            function highlightMatchedText(source, pattern, color)
-            {
-                $(source).each(function()
-                {
-                    var text = $(this).text();
-                    var highlightText = text.replace(new RegExp('(' + pattern + ')', 'gi'), '<span style="background-color: #d3d3d3">$1</span>');
-                    $(this).html(highlightText);
+            function searchNearestFarmersCallback(farmers) {
+                mapService.removeAllMarkers();
+                farmers.map(function (farmer) {
+                    mapService.addMarker(farmer.latitude, farmer.longitude);
                 });
             }
         };

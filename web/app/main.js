@@ -16,6 +16,7 @@ requirejs.config({
         'jquery': '../bower_components/jquery/jquery',
         'typeahead': '../bower_components/typeahead.js/dist/typeahead.jquery',
         'bloodhound': '../bower_components/typeahead.js/dist/bloodhound',
+        'fullPage': '../bower_components/fullpage.js/jquery.fullPage',
         'underscore': '../bower_components/underscore/underscore',
         'async': '../bower_components/requirejs-plugins/src/async',
         'services': 'services',
@@ -33,10 +34,14 @@ requirejs.config({
         },
         'bloodhound':{
             deps: ['jquery'],
-            exports: 'jQuery'
+            exports: 'Bloodhound'
         },
         'underscore': {
             exports: '_'
+        },
+        'fullPage': {
+            deps: ['jquery'],
+            exports: 'jQuery'
         }
     }
 });

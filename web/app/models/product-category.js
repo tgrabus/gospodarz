@@ -9,6 +9,9 @@ define([], function() {
         VEGETABLE: 2,
         MEAT: 3,
         DAIRY: 4,
+        MUSHROOM: 5,
+        FISH: 6,
+        NUT: 7,
 
         validate: function(category){
             switch (category) {
@@ -16,6 +19,9 @@ define([], function() {
                 case this.VEGETABLE:
                 case this.MEAT:
                 case this.DAIRY:
+                case this.MUSHROOM:
+                case this.FISH:
+                case this.NUT:
                     return true;
                 default:
                     return false;

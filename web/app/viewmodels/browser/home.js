@@ -7,36 +7,59 @@
 define([
         'bootstrap',
         'knockout',
+        'fullPage',
         'services/map',
-        'viewmodels/browser/locations',
+        'viewmodels/browser/categories',
         'viewmodels/browser/products',
-        'models/product-category',
+        'viewmodels/browser/locations'
     ],
-    function ($, ko, MapService, LocationBrowser, ProductBrowser, productCategory)
+    function ($, ko, fullPage, MapService, CategoryViewModel, ProductViewModel, LocationViewModel)
     {
         var home = function ()
         {
             var self = this;
             var mapService = new MapService();
 
-            self.locationBrowser = ko.observable(new LocationBrowser());
-            self.vegetableBrowser = ko.observable(new ProductBrowser());
-            self.fruitBrowser = ko.observable(new ProductBrowser());
+            self.categoryViewModel = new CategoryViewModel();
+            self.productViewModel = new ProductViewModel();
+            self.locationViewModel = new LocationViewModel();
+
+            self.title = ko.observable(self.categoryViewModel.title)
 
             self.attached = function ()
             {
-                initMap();
-                initTooltips();
+                initPageNavigation();
+                //initMap();
+                exchangeResultsBetweenFilters();
             };
 
-            self.activateVegetableTab = function()
-            {
-                self.vegetableBrowser().loadProducts(productCategory.VEGETABLE);
-            }
+            function initPageNavigation() {
+                $('#fullpage').fullpage({
+                    anchors: ['firstPage', 'secondPage', '3rdPage', '4thPage'],
+                    sectionsColor: ['#fffff', '#fffff', '#fffff', '#fffff'],
+                    navigation: true,
+                    navigationPosition: 'right',
 
-            self.activateFruitTab = function()
-            {
-                self.fruitBrowser().loadProducts(productCategory.FRUIT);
+                    scrollBar: true,
+                    controlArrows: true,
+                    verticalCentered: false,
+                    resize : true,
+                    paddingBottom: '0px',
+                    responsive: 0,
+                    paddingTop: '200px', //143
+
+                    onLeave: function(index, nextIndex, direction){
+                        if(nextIndex === 1){
+                            self.title(self.categoryViewModel.title);
+                        }
+                        else if(nextIndex === 2){
+                            self.title(self.productViewModel.title);
+                        }
+                        else if(nextIndex === 3){
+                            self.title(self.locationViewModel.title);
+                        }
+                    }
+                });
             }
 
             function initMap()
@@ -48,12 +71,12 @@ define([
                 }
             }
 
-            function initTooltips() {
-                $('#selected-filters').tooltip({
-                    selector: '.delete-selected-product'
-                });
+            function exchangeResultsBetweenFilters() {
+                self.locationViewModel.selectedProducts = self.productViewModel.selectedProducts
             }
         };
+
+
 
         return home;
     });

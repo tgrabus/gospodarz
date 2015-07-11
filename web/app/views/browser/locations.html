@@ -1,34 +1,15 @@
 <div>
-    <br/>
-    <form class="form-horizontal" role="form">
-        <div class="form-group">
-            <div class="col-md-3">
-                <input id="searchCity"
-                       type="text"
-                       placeholder="Wyszukaj miejscowość"
-                       class="form-control"
-                       data-bind="valueUpdate: 'afterkeydown', event: { 'keyup': searchCities }">
+    <div class="container">
+        <form class="form-horizontal" role="form">
+            <div class="form-group">
+                <div class="col-md-5">
+                    <div id="bloodhound">
+                        <input class="typeahead form-control input-lg" type="text" placeholder="Wyszukaj miejscowość">
+                    </div>
+                </div>
             </div>
-            <div class="checkbox col-md-2">
-                <label>
-                    <input type="checkbox" value="">
-                    Szukaj wszędzie
-                </label>
-            </div>
-            <div class="checkbox col-md-2">
-                <label>
-                    <input type="checkbox" value="">
-                    Najbliżej mnie
-                </label>
-            </div>
-        </div>
-    </form>
+        </form>
 
-    <div class="row" id="filtered-cities" data-bind="foreach: filteredCities">
-        <div class="col-md-2" data-bind="foreach: $data">
-            <p>
-                <a data-bind="text: $data.name, css: { 'disable-link': $data.isSelected()}, click: $root.selectCity"></a>
-            </p>
-        </div>
+        <div id="select-location-on-map"></div>
     </div>
 </div>

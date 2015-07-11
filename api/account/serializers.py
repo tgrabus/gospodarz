@@ -9,7 +9,7 @@ __author__ = 'tgrabus'
 
 class FarmerProductSerializer(serializers.ModelSerializer):
     picture_url = serializers.SerializerMethodField('get_picture_url')
-    product = SlugRelatedField(slug_field='name')
+    product = SlugRelatedField(slug_field='name', read_only=True)
 
     def get_picture_url(self, obj):
         if obj.picture:
