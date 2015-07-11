@@ -8,6 +8,7 @@ define(['knockout'], function(ko) {
         this.name = ko.observable(category.name);
         this.picture = ko.observable(category.picture);
         this.isSelected = ko.observable(false);
+        this.id = ko.observable(category.id);
     };
 
     return categoryModel;

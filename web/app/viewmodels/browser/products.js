@@ -13,10 +13,26 @@ define([
         var productBrowser = function ()
         {
             var self = this;
-            self.filteredProducts = ko.observableArray([]);
+            self.allProducts = ko.observableArray([]);
+
+            self.selectedCategories = ko.observableArray([]);
+
+            self.filteredProducts = ko.computed(function() {
+                var categories = self.selectedCategories().map(function(category) {
+                    return category.id();
+                });
+
+                if(categories.length === 0) {
+                    return self.allProducts();
+                }
+
+                return self.allProducts().filter(function(product) {
+                    return categories.indexOf(product.category) > -1;
+                });
+            });
 
             self.selectedProducts = ko.computed(function() {
-               return self.filteredProducts().filter(function(product) {
+               return self.allProducts().filter(function(product) {
                    return product.isSelected();
                })
             });
@@ -40,7 +56,7 @@ define([
 
             function getProductsCallback(products)
             {
-                self.filteredProducts(products);
+                self.allProducts(products);
             }
         };
 

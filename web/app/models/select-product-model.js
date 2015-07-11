@@ -10,6 +10,7 @@ define(['knockout'], function(ko)
         this.name = product.name;
         this.image = product.picture_url;
         this.isSelected = ko.observable(false);
+        this.category = product.product_category;
     };
 
     return productSelectModel;

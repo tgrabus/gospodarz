@@ -37,7 +37,7 @@ define([
                 $('#fullpage').fullpage({
                     anchors: ['firstPage', 'secondPage', '3rdPage', '4thPage'],
                     sectionsColor: ['#fffff', '#fffff', '#fffff', '#fffff'],
-                    navigation: true,
+                    navigation: false,
                     navigationPosition: 'right',
 
                     scrollBar: true,
@@ -72,6 +72,7 @@ define([
             }
 
             function exchangeResultsBetweenFilters() {
+                self.productViewModel.selectedCategories = self.categoryViewModel.selectedCategories
                 self.locationViewModel.selectedProducts = self.productViewModel.selectedProducts
             }
         };
