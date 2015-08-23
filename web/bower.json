@@ -23,6 +23,7 @@
     "typeahead.js": "~0.10.5",
     "underscore": "~1.7.0",
     "requirejs-plugins": "~1.0.2",
-    "fullpage.js": "~2.6.0"
+    "fullpage.js": "~2.6.0",
+    "seiyria-bootstrap-slider": "~4.10.4"
   }
 }

@@ -18,7 +18,7 @@ define(
             {
                 var myOptions = {
                     center: new google.maps.LatLng( latitude, longitude ),
-                    zoom: 13,
+                    zoom: 7,
                     mapTypeId: google.maps.MapTypeId.ROADMAP
                 };
 

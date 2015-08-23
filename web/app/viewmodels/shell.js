@@ -14,7 +14,6 @@ define(function (require)
         {
             router.map([
                 { route: '', title: 'Start', moduleId: 'viewmodels/browser/home', nav: true },
-                { route: 'account', title: 'Konto', moduleId: 'viewmodels/account/home', nav: true }
             ]).buildNavigationModel();
 
             return router.activate();

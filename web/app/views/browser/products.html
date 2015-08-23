@@ -1,27 +1,47 @@
 <div>
-    <div class="container">
+    <p>aa</p>
+    <p>aa</p>
+    <p>aa</p>
+    <p>aa</p>
+    <p>aa</p>
+    <p>aa</p>
+    <p>aa</p>
+    <p>aa</p>
+    <p>aa</p>
+    <p>aa</p>
+    <p>aa</p>
+    <p>aa</p>
+    <p>aa</p>
+    <p>aa</p>
+    <p>aa</p>
+    <p>aa</p>
+    <p>aa</p>
+    <p>aa</p>
+    <p>aa</p>
+    <p>aa</p>
+    <p>aa</p>
+    <p>aa</p>
+    <p>aa</p>
+    <p>aa</p>
+    <p>aa</p>
+    <p>aa</p>
+    <p>aa</p>
+    <p>aa</p>
+    <p>aa</p>
+    <p>aa</p>
+    <p>aa</p>
+    <p>aa</p>
+    <p>aa</p>
+    <p>aa</p>
+    <p>aa</p>
+    <p>aa</p>
+    <p>aa</p>
+    <div data-bind="foreach: {data:filteredProducts, as: 'product'}">
 
-        <div class="row">
-            <div class="col-md-12">
-                <a>Wszystkie</a>
-                <a>Odznacz</a>
-            </div>
+        <div class="padding-bottom-15 padding-left-7 padding-right-7"
+             data-bind="click: $root.selectProduct">
+
+            <img data-bind="attr:{src: product.image, alt: product.name , title: product.name }, css: { 'product-selected': product.isSelected() }">
         </div>
-
-        <div class="row">
-            <div class="col-md-12">
-                <div class="row" data-bind="foreach: {data:filteredProducts, as: 'product'}">
-                    <div class="col-md-1 padding-bottom-15 padding-left-7 padding-right-7" data-bind="click: $root.selectProduct">
-                        <img data-bind="attr:{src: product.image, alt: product.name , title: product.name }, css: { 'product-selected': product.isSelected() }" class="img-responsive img-rounded">
-                    </div>
-                </div>
-            </div>
-        </div>
-
     </div>
 </div>
-
-
-
-
-

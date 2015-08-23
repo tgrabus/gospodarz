@@ -4,6 +4,7 @@
 
 define([
         'knockout',
+        'bootstrap-slider',
         'utils/strings',
         'utils/arrays',
         'services/map',
@@ -13,7 +14,7 @@ define([
         'typeahead',
         'bloodhound'
     ],
-    function (ko, strings, arrays, MapService, geocoderService, cityService, localizationService, Typeahead, Bloodhound)
+    function (ko, slider, strings, arrays, MapService, geocoderService, cityService, localizationService, Typeahead, Bloodhound)
     {
         var locationBrowser = function ()
         {
@@ -27,8 +28,11 @@ define([
 
             self.title = "Wybierz lokalizacje"
 
+            self.distance = ko.observable('50');
+
             self.attached = function ()
             {
+                initSlider();
                 cityService.getAllCities(getAllCitiesCallback);
                 initMap();
             };
@@ -37,13 +41,25 @@ define([
                 localizationService.searchNearestFarmers(latlng, self.selectedProducts(), searchNearestFarmersCallback);
             }
 
+            self.distanceChanged = function () {
+                console.log(self.distance());
+            }
+
             function initMap()
             {
                 var canvas = $("#select-location-on-map").get(0);
 
                 if(canvas) {
-                    mapService.loadMap(canvas, 54.469331, 17.023672);
+                    mapService.loadMap(canvas, 53, 19);
                 }
+            }
+
+            function initSlider() {
+                $('#distance').slider({
+                    formatter: function(value) {
+                        return value + ' km';
+                    }
+                });
             }
 
             function initCityAutoComplete(cities) {

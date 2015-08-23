@@ -1,15 +1,18 @@
 <div>
     <div class="container">
-        <form class="form-horizontal" role="form">
-            <div class="form-group">
-                <div class="col-md-5">
-                    <div id="bloodhound">
-                        <input class="typeahead form-control input-lg" type="text" placeholder="Wyszukaj miejscowość">
-                    </div>
+        <div class="row">
+
+            <div class="col-md-4">
+                <div id="bloodhound">
+                    <input class="typeahead form-control input-lg" type="text" placeholder="Miejscowość">
                 </div>
             </div>
-        </form>
-
+            <div class="col-md-8">
+                <div>w odległości</div>
+                <input id="distance" data-slider-id='distanceSlider' type="text" data-slider-min="10" data-slider-max="500" data-slider-step="1" data-slider-value="50"
+                       data-bind="event: { change: distanceChanged }, value: distance, valueUpdate: 'afterkeydown'" />
+            </div>
+        </div>
         <div id="select-location-on-map"></div>
     </div>
 </div>

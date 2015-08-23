@@ -19,6 +19,7 @@ requirejs.config({
         'fullPage': '../bower_components/fullpage.js/jquery.fullPage',
         'underscore': '../bower_components/underscore/underscore',
         'async': '../bower_components/requirejs-plugins/src/async',
+        'bootstrap-slider': '../bower_components/seiyria-bootstrap-slider/js/bootstrap-slider',
         'services': 'services',
         'models': 'models',
         'utils': 'utils'
@@ -40,6 +41,10 @@ requirejs.config({
             exports: '_'
         },
         'fullPage': {
+            deps: ['jquery'],
+            exports: 'jQuery'
+        },
+        'bootstrap-slider': {
             deps: ['jquery'],
             exports: 'jQuery'
         }

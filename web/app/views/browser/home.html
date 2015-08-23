@@ -1,17 +1,8 @@
 <div>
-    <div id="header">
+    <!--<div id="header">
         <div class="row alert alert-success" style="margin-bottom: 0px;">
             <div class="col-md-7">
                 <div class="row">
-                    <div class="col-md-1">
-                        <img src="images/location.jpg" alt="" class="img-responsive img-rounded">
-                    </div>
-                    <div class="col-md-1">
-                        <img src="images/location.jpg" alt="" class="img-responsive img-rounded">
-                    </div>
-                    <div class="col-md-1">
-                        <img src="images/location.jpg" alt="" class="img-responsive img-rounded">
-                    </div>
                     <div class="col-md-9">
                         <div class="font-size-3">
                             <strong data-bind="text: title"></strong>
@@ -20,17 +11,10 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>-->
 
-    <div id="fullpage">
-        <div id="step1" class="section" data-bind="compose: categoryViewModel"></div>
-        <div id="step2" class="section" data-bind="compose: productViewModel">
-            <div></div>
-            <div></div>
-        </div>
-        <div id="step3" class="section" data-bind="compose: locationViewModel"></div>
-        <div class="section">
-            <div id="map-canvas"></div>
-        </div>
+    <div>
+        <div id="productSection" class="section" data-bind="compose: productViewModel"></div>
+        <!--<div class="section" data-bind="compose: locationViewModel"></div>-->
     </div>
 </div>
