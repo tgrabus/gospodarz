@@ -4,62 +4,52 @@
 
 define([
         'knockout',
-        'utils/arrays',
-        'models/product-category',
-        'services/product-service'
+        'vmhelpers/browser/products'
     ],
-    function (ko, arrays, productCategory,  productService)
+    function (ko, ViewModelHelper)
     {
-        var productBrowser = function ()
+        var viewModel = function ()
         {
             var self = this;
+
+            var helper = new ViewModelHelper(self);
+
+            self.title = "Wybierz produkty"
+
             self.allProducts = ko.observableArray([]);
 
             self.selectedCategories = ko.observableArray([]);
 
             self.filteredProducts = ko.computed(function() {
-                var categories = self.selectedCategories().map(function(category) {
-                    return category.id();
-                });
-
-                if(categories.length === 0) {
-                    return self.allProducts();
-                }
-
-                return self.allProducts().filter(function(product) {
-                    return categories.indexOf(product.category) > -1;
-                });
+                return helper.getFilteredProducts();
             });
 
             self.selectedProducts = ko.computed(function() {
-               return self.allProducts().filter(function(product) {
-                   return product.isSelected();
-               })
+               return helper.getSelectedCategories();
             });
 
-            self.title = "Wybierz produkty"
-
-            self.attached = function ()
-            {
+            self.attached = function () {
                 self.loadProducts();
             };
 
-            self.loadProducts = function ()
-            {
-                productService.getProducts(getProductsCallback)
+            self.loadProducts = function () {
+                helper.getProducts();
             }
 
-            self.selectProduct = function(product)
-            {
-                product.isSelected(!product.isSelected());
+            self.selectProduct = function(product) {
+                helper.selectProduct(product);
             }
 
-            function getProductsCallback(products)
-            {
-                self.allProducts(products);
+            self.showTile = function(product) {
+                helper.highlightProduct(product);
+
+            }
+
+            self.hideTile = function(product) {
+                helper.unhighlightProduct(product);
             }
         };
 
-        return productBrowser;
+        return viewModel;
     }
 )

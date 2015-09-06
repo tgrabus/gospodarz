@@ -2,8 +2,8 @@
  * Created by tgrabus on 2015-02-14.
  */
 
-define(['knockout', 'plugins/http', 'utils/strings', 'utils/links', 'models/select-product-model', 'models/farmer-product-model'],
-    function (ko, http, strings, links, ProductSelectModel, FarmerProductModel) {
+define(['knockout', 'plugins/http', 'utils/strings', 'utils/links', 'models/product', 'models/farmer-product-model'],
+    function (ko, http, strings, links, Product, FarmerProductModel) {
 
     function getProductsByCategory(category, callback)
     {
@@ -13,7 +13,7 @@ define(['knockout', 'plugins/http', 'utils/strings', 'utils/links', 'models/sele
         {
             var products = response.map(function(product)
             {
-                return new ProductSelectModel(product);
+                return new Product(product);
             });
 
             products = products.sort(function (a, b) {
@@ -31,7 +31,7 @@ define(['knockout', 'plugins/http', 'utils/strings', 'utils/links', 'models/sele
         {
             var products = response.map(function(product)
             {
-                return new ProductSelectModel(product);
+                return new Product(product);
             });
 
             products = products.sort(function (a, b) {

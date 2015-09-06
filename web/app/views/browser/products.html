@@ -1,47 +1,8 @@
 <div>
-    <p>aa</p>
-    <p>aa</p>
-    <p>aa</p>
-    <p>aa</p>
-    <p>aa</p>
-    <p>aa</p>
-    <p>aa</p>
-    <p>aa</p>
-    <p>aa</p>
-    <p>aa</p>
-    <p>aa</p>
-    <p>aa</p>
-    <p>aa</p>
-    <p>aa</p>
-    <p>aa</p>
-    <p>aa</p>
-    <p>aa</p>
-    <p>aa</p>
-    <p>aa</p>
-    <p>aa</p>
-    <p>aa</p>
-    <p>aa</p>
-    <p>aa</p>
-    <p>aa</p>
-    <p>aa</p>
-    <p>aa</p>
-    <p>aa</p>
-    <p>aa</p>
-    <p>aa</p>
-    <p>aa</p>
-    <p>aa</p>
-    <p>aa</p>
-    <p>aa</p>
-    <p>aa</p>
-    <p>aa</p>
-    <p>aa</p>
-    <p>aa</p>
-    <div data-bind="foreach: {data:filteredProducts, as: 'product'}">
-
-        <div class="padding-bottom-15 padding-left-7 padding-right-7"
-             data-bind="click: $root.selectProduct">
-
-            <img data-bind="attr:{src: product.image, alt: product.name , title: product.name }, css: { 'product-selected': product.isSelected() }">
-        </div>
+    <div>
+        <!-- ko foreach: {data:filteredProducts, as: 'product'}
+        --><div class="inline-image-container" data-bind="click: $root.selectProduct, event: { mouseover: $root.showTile, mouseout: $root.hideTile }"
+            ><img data-bind="attr:{src: product.image, alt: product.name }"
+            ><div class="tile" data-bind="visible: product.isHighlighted"><span class="text-center" data-bind="text: product.name"></span></div></div><!-- /ko -->
     </div>
 </div>
