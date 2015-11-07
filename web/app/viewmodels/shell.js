@@ -13,7 +13,7 @@ define(function (require)
         activate: function ()
         {
             router.map([
-                { route: '', title: 'Start', moduleId: 'viewmodels/browser/home', nav: true },
+                { route: '', title: 'Home', moduleId: 'viewmodels/map/index', nav: true }
             ]).buildNavigationModel();
 
             return router.activate();

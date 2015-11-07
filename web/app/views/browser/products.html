@@ -1,8 +1,0 @@
-<div>
-    <div>
-        <!-- ko foreach: {data:filteredProducts, as: 'product'}
-        --><div class="inline-image-container" data-bind="click: $root.selectProduct, event: { mouseover: $root.showTile, mouseout: $root.hideTile }"
-            ><img data-bind="attr:{src: product.image, alt: product.name }"
-            ><div class="tile" data-bind="visible: product.isHighlighted"><span class="text-center" data-bind="text: product.name"></span></div></div><!-- /ko -->
-    </div>
-</div>

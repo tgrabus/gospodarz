@@ -1,129 +1,201 @@
+/***************/
+/*Global styles*/
+/***************/
+
 * {
     margin: 0;
     padding: 0;
 }
 
 html, body {
-    overflow: auto;
+    height: 100%;
+}
+
+#applicationHost {
+    height: 100%;
+}
+
+#applicationHost > div {
+    height: 100%;
+}
+
+.page-host {
+    position: relative;
+    height: 100%;
+}
+
+.page-host > div {
+    height: 100%;
+}
+
+.section {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.no-selectable {
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select:none;
+    user-select:none;
+    -o-user-select:none;
+}
+
+.my-view {
+    position: relative;
+    height: 100%;
+}
+
+/*********************/
+/*Styles for map.html*/
+/*********************/
+
+#result-map {
+    width: 100%;
+    height: 100%;
+}
+
+#filters {
+    position: absolute;
+    top: 0em;
+    left: 0em;
+    height: 100%;
+    width: 4%;
     background-color: white;
 }
+
+#filters > div {
+    width: 4em;
+    height: 4em;
+    border-radius: 50%;
+    border: 2px solid black;
+    text-align: center;
+    margin-bottom: 1em;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+}
+
+#filters > div:nth-child(1) {
+    margin-top: 1em;
+    background-color: red;
+}
+
+#filters > div:nth-child(2) {
+    margin-top: 1em;
+    background-color: #16B875;
+}
+
+#product-filter, #location-filter {
+    width: 96%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 4%;
+    background-color: rgba(0,0,0,0.7);
+    display: none;
+    color: white;
+}
+
+.close-filter {
+    position: absolute;
+    top: 1%;
+    right: 1%;
+    color: white;
+    font-size: 30px;
+    cursor: default;
+    text-shadow:
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;
+}
+
+.close-filter:hover {
+    color: red;
+    text-shadow:
+    3px 3px 0 #000,
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;
+}
+
+/***************************/
+/*Styles for product filter*/
+/***************************/
 
 .inline-image-container {
     position: relative;
     display: inline-block;
-    width: 50%;
+    text-align: center;
+    margin: 1em;
 }
 
 .inline-image-container:hover {
     cursor: pointer;
 }
 
-@media screen and (min-width: 300px) {
-    .inline-image-container {
-        display: inline-block;
-        width: 33.3%;
-    }
-}
-
-@media screen and (min-width: 550px) {
-    .inline-image-container {
-        display: inline-block;
-        width: 25%;
-    }
-}
-
-@media screen and (min-width: 750px) {
-    .inline-image-container {
-        display: inline-block;
-        width: 20%;
-    }
-}
-
-@media screen and (min-width: 950px) {
-    .inline-image-container {
-        display: inline-block;
-        width: 10%;
-    }
-}
-
 .inline-image-container > img {
-    width: 98%;
+    width: 80px;
     height: auto;
-    margin: 1%;
-    border-radius: 1%;
+    border-radius: 50%;
+    border: 2px white solid;
+    margin-bottom: 6px;
 }
 
-.tile {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    width: 98%;
-    margin: 1%;
-    height: 98%;
-    border-radius: 1%;
-    background-color: rgba(0,0,0,0.7);
+.inline-image-container > img:hover {
+    -moz-box-shadow: 0 0 10px #ccc;
+    -webkit-box-shadow: 0 0 10px #ccc;
+    box-shadow: 0 0 1em #ccc;
 }
 
-.tile > span {
-    font-weight: bold;
-    font-size: large;
+.inline-image-container > .img-description {
     color: white;
+    text-shadow: -1px -1px 0px #000, 1px -1px 0px #000, -1px 1px 0px #000, 1px 1px 0px #000;
 }
 
-.text-center {
+.inline-image-container > .img-selected {
+    position: absolute;
+    right: 0;
+    color: white;
+    text-shadow: -1px -1px 0px #000, 1px -1px 0px #000, -1px 1px 0px #000, 1px 1px 0px #000;
+    font-size: 20px;
+}
+
+.text-shadow {
+    text-shadow: -1px -1px 0px #000, 1px -1px 0px #000, -1px 1px 0px #000, 1px 1px 0px #000;
+}
+
+/****************************/
+/*Styles for location filter*/
+/****************************/
+
+.center-location-content {
     position: absolute;
     top: 0;
+    right: 0;
     bottom: 0;
     left: 0;
-    right: 0;
     margin: auto;
-    text-align: center;
-    height: 2em;
+    height: 10em;
+    width: 30em;
 }
 
-
-
-
-
-
-.blue {
-    background-color: blue;
-}
-
-.green {
-    background-color: green;
-}
-
-.red {
-    background-color: red;
-}
-
-.black {
-    background-color: black;
-}
-
-
-
-
-
-
-
-
-
-
-#map-canvas {
-    width: 100%;
-    height: 100%;
-}
-
-#select-location-on-map {
-    width: 100%;
-    height: 500px;
+.search-button {
+    background-color: #16B875;
 }
 
 .twitter-typeahead {
     display: block;
-    width: 100%;
+    width: 30em;
+    overflow: hidden;
+}
+
+.typeahead {
+    border: 1px solid black;
+    border-radius: 1em;
 }
 
 .tt-query {
@@ -167,12 +239,3 @@ html, body {
 .tt-suggestion p {
     margin: 0;
 }
-
-#distanceSlider {
-    /*margin-top: 12px;*/
-}
-
-#distanceSlider .slider-selection {
-    background: #BABABA;
-}
-

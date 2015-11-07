@@ -21,8 +21,6 @@ requirejs.config({
         'async': '../bower_components/requirejs-plugins/src/async',
         'bootstrap-slider': '../bower_components/seiyria-bootstrap-slider/js/bootstrap-slider',
         'services': 'services',
-        'vmhelpers': 'vmhelpers',
-        'models': 'models',
         'utils': 'utils'
     },
     shim: {
@@ -70,6 +68,6 @@ define(function (require) {
 
         viewLocator.useConvention();
 
-        app.setRoot('viewmodels/shell');
+        app.setRoot('viewmodels/shell', 'entrance');
     });
 });

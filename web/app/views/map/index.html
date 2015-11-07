@@ -1,0 +1,35 @@
+<div class="my-view">
+    <div id="result-map"></div>
+    <div id="filters">
+        <div data-bind="click: displayProductFilter">P</div>
+        <div data-bind="click: displayLocationFilter">M</div>
+    </div>
+
+    <div id="product-filter" data-bind="with: productFilterViewModel">
+        <!-- ko foreach: {data:filteredProducts, as: 'product'} -->
+        <div class="inline-image-container" data-bind="click: $parent.selectProduct">
+            <img data-bind="attr:{src: product.image, alt: product.name }" class="img-responsive">
+            <span class="img-description" data-bind="text: product.name"></span>
+            <span class="glyphicon glyphicon-ok img-selected" data-bind="visible: product.isSelected"></span>
+        </div>
+        <!-- /ko -->
+        <span class="glyphicon glyphicon-remove close-filter" data-bind="click: $parent.closeFilters" title="Close"></span>
+    </div>
+
+    <div id="location-filter">
+        <div class="center-location-content">
+
+            <h2 class="text-shadow">Wprowadź miejscowość</h2>
+            <div class="input-group input-group-lg">
+                <input type="text" class="form-control" placeholder="Miejscowość">
+                <span class="input-group-btn">
+                    <button class="btn btn-default search-button" type="button">Szukaj</button>
+                </span>
+            </div>
+            <div id="bloodhound" style="color: #000066">
+                <input class="typeahead" type="text" placeholder="States of USA">
+            </div>
+        </div>
+        <span class="glyphicon glyphicon-remove close-filter" data-bind="click: closeFilters" title="Close"></span>
+    </div>
+</div>

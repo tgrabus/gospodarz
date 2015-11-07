@@ -18,7 +18,7 @@ class Root(viewsets.ViewSet):
 
 class CityViewSet(viewsets.ViewSet):
     def list(self, request):
-        cities = City.objects.all()
+        cities = City.objects.all().order_by('name')
         serializer = CitySerializer(cities, many=True)
         return Response(serializer.data)
 
