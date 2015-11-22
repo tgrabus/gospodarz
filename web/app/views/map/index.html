@@ -6,6 +6,7 @@
     </div>
 
     <div id="product-filter" data-bind="with: productFilterViewModel">
+
         <!-- ko foreach: {data:filteredProducts, as: 'product'} -->
         <div class="inline-image-container" data-bind="click: $parent.selectProduct">
             <img data-bind="attr:{src: product.image, alt: product.name }" class="img-responsive">
@@ -13,23 +14,30 @@
             <span class="glyphicon glyphicon-ok img-selected" data-bind="visible: product.isSelected"></span>
         </div>
         <!-- /ko -->
-        <span class="glyphicon glyphicon-remove close-filter" data-bind="click: $parent.closeFilters" title="Close"></span>
+
+        <div>
+            <button class="btn btn-lg btn-primary" data-bind="click: function() { $parent.search(); }">Pokaż</button>
+        </div>
+
+        <div class="actions">
+            <span class="glyphicon glyphicon-remove action close-action pull-right" data-bind="click: $parent.closeFilters" title="Close"></span>
+        </div>
     </div>
 
-    <div id="location-filter">
+    <div id="location-filter" data-bind="with: locationFilterViewModel">
         <div class="center-location-content">
 
             <h2 class="text-shadow">Wprowadź miejscowość</h2>
-            <div class="input-group input-group-lg">
-                <input type="text" class="form-control" placeholder="Miejscowość">
-                <span class="input-group-btn">
-                    <button class="btn btn-default search-button" type="button">Szukaj</button>
-                </span>
+            <div id="bloodhound" class="input-group">
+                <input type="text" class="form-control typeahead" placeholder="np. Warszawa">
             </div>
-            <div id="bloodhound" style="color: #000066">
-                <input class="typeahead" type="text" placeholder="States of USA">
+            <div>
+                <button class="btn btn-lg btn-primary" data-bind="click: function() { $parent.search(); }">Pokaż</button>
             </div>
         </div>
-        <span class="glyphicon glyphicon-remove close-filter" data-bind="click: closeFilters" title="Close"></span>
+
+        <div class="actions">
+            <span class="glyphicon glyphicon-remove action close-action pull-right" data-bind="click: $parent.closeFilters" title="Close"></span>
+        </div>
     </div>
 </div>

@@ -3,12 +3,14 @@
 define([
         'knockout',
         'services/google-map-adapter',
+        'services/farmer-searcher',
         'viewmodels/map/product-filter',
         'viewmodels/map/location-filter'
     ],
-    function (ko, GoogleMapAdapter, ProductFilterViewModel, LocationFilterViewModel)
+    function (ko, GoogleMapAdapter, FarmerSearcher, ProductFilterViewModel, LocationFilterViewModel)
     {
         var googleMapAdapter = new GoogleMapAdapter();
+        var farmerSearcher = new FarmerSearcher();
 
         var ViewModel = function () {
             var self = this;
@@ -17,14 +19,15 @@ define([
         };
 
         ViewModel.prototype.activate = function() {
-            var promise1 = this.productFilterViewModel.init();
-            var promise2 = this.locationFilterViewModel.init();
+            var promise1 = this.productFilterViewModel.initData();
+            var promise2 = this.locationFilterViewModel.initData();
             return $.when( promise1, promise2 );
-        }
+        };
 
         ViewModel.prototype.attached = function() {
             this.initGoogleMap();
-        }
+            this.locationFilterViewModel.initView();
+        };
 
         ViewModel.prototype.initGoogleMap = function() {
             var canvas = $("#result-map").get(0);
@@ -32,22 +35,36 @@ define([
             if(canvas) {
                 googleMapAdapter.loadMap(canvas, 53, 19);
             }
-        }
+        };
 
         ViewModel.prototype.displayProductFilter = function() {
             $('#location-filter').hide();
             $('#product-filter').toggle();
-        }
+        };
 
         ViewModel.prototype.displayLocationFilter = function() {
             $('#product-filter').hide();
             $('#location-filter').toggle();
-        }
+        };
 
         ViewModel.prototype.closeFilters = function() {
             $('#location-filter').hide();
             $('#product-filter').hide();
-        }
+        };
+
+        ViewModel.prototype.search = function() {
+            var self = this;
+            self.locationFilterViewModel.decodeLocalization().then(function(latlng) {
+                farmerSearcher.search(latlng, self.productFilterViewModel.getSelectedProducts()).then(function(farmers) {
+                    googleMapAdapter.removeAllMarkers();
+                    googleMapAdapter.setCenter(latlng.lat(), latlng.lng());
+                    farmers.map(function (farmer) {
+                        googleMapAdapter.addMarker(farmer.latitude, farmer.longitude);
+                    });
+                    self.closeFilters();
+                });
+            });
+        };
 
         return ViewModel;
     });

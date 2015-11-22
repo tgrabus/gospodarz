@@ -69,7 +69,7 @@ class SearchViewSet(viewsets.ViewSet):
                                                     '(sin_longitude * %s + '
                                                     'cos_longitude * %s)')]),
                    select_params=(sin_latitude, cos_latitude, sin_longitude, cos_longitude)) \
-            .extra(where=['distance>%s'], params=[cos(200 / 6371.0)]) \
+            .extra(where=['distance>%s'], params=[cos(50 / 6371.0)]) \
             .extra(order_by=['-distance'])
 
         localizations_query = localizations_query.filter(farmer_id__in=farmer_products_query.values_list('farmer_id', flat=True))

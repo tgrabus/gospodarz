@@ -8,16 +8,18 @@ define([
     function (ko, ProductProvider, ProductItemViewModel)
     {
         var productProvider = new ProductProvider();
+        var parent;
 
-        var ViewModel = function () {
+        var ViewModel = function (parentViewModel) {
             var self = this;
+            parent = parentViewModel;
             self.allProducts = ko.observableArray([]);
             self.filteredProducts = ko.computed(function() {
                 return self.allProducts();
             });
         };
 
-        ViewModel.prototype.init = function() {
+        ViewModel.prototype.initData = function() {
             var self = this;
             return self.loadProducts();
         }
@@ -41,6 +43,7 @@ define([
         }
 
         ViewModel.prototype.getSelectedProducts = function() {
+            var self = this;
             return self.allProducts().filter(function(product) {
                return product.isSelected();
             });
