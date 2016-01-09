@@ -62,3 +62,10 @@ fixtures
 #ide staff
 .idea
 *.iml
+/GospodarzDataGenerator/Cities.json
+/GospodarzDataGenerator/FarmerProducts.json
+/GospodarzDataGenerator/Farmers.json
+/GospodarzDataGenerator/Fruits.json
+/GospodarzDataGenerator/Localizations.json
+/GospodarzDataGenerator/Products.json
+/GospodarzDataGenerator/Vegetables.json
