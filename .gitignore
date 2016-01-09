@@ -55,5 +55,10 @@ target/
 
 #bower staff
 bower_components/
+
+#django staff
 fixtures
+
+#ide staff
 .idea
+*.iml
