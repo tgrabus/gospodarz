@@ -56,3 +56,4 @@ target/
 #bower staff
 bower_components/
 fixtures
+.idea
