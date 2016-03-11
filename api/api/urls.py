@@ -17,6 +17,7 @@ list_farmers_by_localizations_and_products = SearchViewSet.as_view({'post': 'sea
 
 urlpatterns = format_suffix_patterns([
 
+    url(r'^', include('rest_framework_swagger.urls')),
 
     url(r'^admin/', include(admin.site.urls)),
 

@@ -2,9 +2,8 @@ from collections import OrderedDict
 from math import *
 from rest_framework import viewsets
 from rest_framework.response import Response
+from search.requests.data import *
 from search.requests.serializers import *
-from search.responses.data import *
-from search.responses.serializers import *
 
 from search.serializers import *
 
@@ -17,12 +16,23 @@ class Root(viewsets.ViewSet):
 
 
 class CityViewSet(viewsets.ViewSet):
+
     def list(self, request):
+        """
+        Retrieve all cities
+        ---
+        response_serializer: CitySerializer
+        """
         cities = City.objects.all().order_by('name')
         serializer = CitySerializer(cities, many=True)
         return Response(serializer.data)
 
     def filter(self, request, name):
+        """
+        Retrieve cities that names start with
+        ---
+        response_serializer: CitySerializer
+        """
         cities = City.objects.filter(name__startswith=name)
         serializer = CitySerializer(cities, many=True)
         return Response(serializer.data)
@@ -30,6 +40,11 @@ class CityViewSet(viewsets.ViewSet):
 
 class ProductViewSet(viewsets.ViewSet):
     def list_by_category(self, request, category):
+        """
+        Retrieve products by specific category
+        ---
+        response_serializer: ProductSerializer
+        """
         products = Product.objects.filter(product_category_id=category).order_by('name')
         context = {'request': request}
         serializer = ProductSerializer(products, many=True, context=context)
@@ -37,6 +52,11 @@ class ProductViewSet(viewsets.ViewSet):
 
 
     def list(self, request):
+        """
+        Retrieve all products
+        ---
+        response_serializer: ProductSerializer
+        """
         products = Product.objects.all()
         context = {'request': request}
         serializer = ProductSerializer(products, many=True, context=context)
@@ -45,12 +65,17 @@ class ProductViewSet(viewsets.ViewSet):
 
 class SearchViewSet(viewsets.ViewSet):
     def search_farmers(self, request):
-        serializer = SearchFarmerSerializer(data=request.DATA)
+        """
+        Search farmers
+        ---
+        response_serializer: SearchFarmerResponseSerializer
+        """
+        serializer = SearchFarmerRequestSerializer(data=request.DATA)
         if serializer.is_valid():
             search_farmer_request = serializer.save()
             localizations = self.localize_nearest_farmers(search_farmer_request)
             farmers = self.map_to_farmer_geolocalizer(localizations)
-            serializer = FarmerGeolocalizerSerializer(farmers, many=True)
+            serializer = SearchFarmerResponseSerializer(farmers, many=True)
             return Response(data=serializer.data)
         else:
             return Response()
@@ -69,7 +94,7 @@ class SearchViewSet(viewsets.ViewSet):
                                                     '(sin_longitude * %s + '
                                                     'cos_longitude * %s)')]),
                    select_params=(sin_latitude, cos_latitude, sin_longitude, cos_longitude)) \
-            .extra(where=['distance>%s'], params=[cos(50 / 6371.0)]) \
+            .extra(where=['distance>%s'], params=[cos(100 / 6371.0)]) \
             .extra(order_by=['-distance'])
 
         localizations_query = localizations_query.filter(farmer_id__in=farmer_products_query.values_list('farmer_id', flat=True))
@@ -80,7 +105,7 @@ class SearchViewSet(viewsets.ViewSet):
         farmers = []
         for localization in localizations:
             localization.distance = 6371 * acos(localization.distance)
-            farmers.append(FarmerGeolocalizer(
+            farmers.append(SearchFarmerResponse(
                 localization.farmer.pk, localization.farmer.name,
                 localization.latitude, localization.longitude,
                 localization.distance))
