@@ -39,17 +39,17 @@ define([
 
         ViewModel.prototype.displayProductFilter = function() {
             $('#location-filter').hide();
-            $('#product-filter').toggle();
+            $('#product-filter').slideToggle(200);
         };
 
         ViewModel.prototype.displayLocationFilter = function() {
             $('#product-filter').hide();
-            $('#location-filter').toggle();
+            $('#location-filter').slideToggle(200);
         };
 
         ViewModel.prototype.closeFilters = function() {
-            $('#location-filter').hide();
-            $('#product-filter').hide();
+            $('#location-filter').slideUp(200);
+            $('#product-filter').slideUp(200);
         };
 
         ViewModel.prototype.search = function() {

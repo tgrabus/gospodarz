@@ -2,7 +2,7 @@
  * Created by tgrabus on 2015-01-08.
  */
 define(
-    ['jquery', "async!http://maps.google.com/maps/api/js?key=AIzaSyDnjft0LXNv7VAstx0CYb9GqJ0sfy_GC5U&sensor=true!callback" ],
+    ['jquery', "async!http://maps.google.com/maps/api/js?key=AIzaSyDnjft0LXNv7VAstx0CYb9GqJ0sfy_GC5U" ],
     function ($)
     {
         var googleGeocoder = new google.maps.Geocoder();

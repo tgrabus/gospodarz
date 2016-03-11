@@ -1,7 +1,7 @@
 
 
 define(
-    [ "async!http://maps.google.com/maps/api/js?key=AIzaSyDnjft0LXNv7VAstx0CYb9GqJ0sfy_GC5U&sensor=true!callback" ],
+    [ "async!http://maps.google.com/maps/api/js?key=AIzaSyDnjft0LXNv7VAstx0CYb9GqJ0sfy_GC5U" ],
     function()
     {
         var self = this;
@@ -17,21 +17,21 @@ define(
                     zoom: 7,
                     mapTypeId: google.maps.MapTypeId.ROADMAP,
                     disableDefaultUI: true,
-                    scrollwheel: false
+                    scrollwheel: false,
+                    zoomControl: true
                 };
 
-                var map = new google.maps.Map( canvas, myOptions );
-                map_instance = map;
-            }
+                map_instance = new google.maps.Map(canvas, myOptions);
+            };
 
             this.getMapInstance = function() {
                 return map_instance;
-            }
+            };
 
             this.isMapLoaded = function()
             {
                 return map_instance ? true : false;
-            }
+            };
 
             this.refreshMap = function()
             {
@@ -40,7 +40,7 @@ define(
                 }
 
                 google.maps.event.trigger( map_instance, 'resize' );
-            }
+            };
 
             this.setCenter = function( latitude, longitude )
             {
@@ -49,12 +49,12 @@ define(
                 }
 
                 map_instance.setCenter( new google.maps.LatLng( latitude, longitude ) );
-            }
+            };
 
             this.addListener = function(target, event, handler)
             {
                 google.maps.event.addListener( target, event, handler );
-            }
+            };
 
             this.clearListeners = function(target, event)
             {
@@ -64,7 +64,7 @@ define(
                 else {
                     google.maps.event.clearInstanceListeners(target);
                 }
-            }
+            };
 
             this.addMarker = function(latitude, longitude)
             {
@@ -89,13 +89,13 @@ define(
                 if(index != -1) {
                     markers.splice(index, 1);
                 }
-            }
+            };
 
             this.removeAllMarkers = function() {
                 while (markers.length > 0) {
                     markers.pop().setMap(null);
                 }
-            }
+            };
         }
     }
 );

@@ -1,12 +1,11 @@
 <div class="my-view">
     <div id="result-map"></div>
     <div id="filters">
-        <div data-bind="click: displayProductFilter">P</div>
-        <div data-bind="click: displayLocationFilter">M</div>
+        <div data-bind="click: displayLocationFilter" title="Wybierz miejscowość"></div>
+        <div data-bind="click: displayProductFilter" title="Wybierz produkty"></div>
     </div>
 
     <div id="product-filter" data-bind="with: productFilterViewModel">
-
         <!-- ko foreach: {data:filteredProducts, as: 'product'} -->
         <div class="inline-image-container" data-bind="click: $parent.selectProduct">
             <img data-bind="attr:{src: product.image, alt: product.name }" class="img-responsive">
@@ -15,8 +14,10 @@
         </div>
         <!-- /ko -->
 
-        <div>
-            <button class="btn btn-lg btn-primary" data-bind="click: function() { $parent.search(); }">Pokaż</button>
+        <div class="text-center">
+            <div class="circle-apply-box">
+                <span class="circle-apply-text" data-bind="click: function() { $parent.search(); }">Pokaż</span>
+            </div>
         </div>
 
         <div class="actions">
@@ -27,13 +28,16 @@
     <div id="location-filter" data-bind="with: locationFilterViewModel">
         <div class="center-location-content">
 
-            <h2 class="text-shadow">Wprowadź miejscowość</h2>
+            <h2 class="text-shadow header">Wprowadź miejscowość</h2>
             <div id="bloodhound" class="input-group">
                 <input type="text" class="form-control typeahead" placeholder="np. Warszawa">
             </div>
-            <div>
-                <button class="btn btn-lg btn-primary" data-bind="click: function() { $parent.search(); }">Pokaż</button>
+            <div class="text-center">
+                <div class="circle-apply-box">
+                    <span class="circle-apply-text" data-bind="click: function() { $parent.search(); }">Pokaż</span>
+                </div>
             </div>
+
         </div>
 
         <div class="actions">
