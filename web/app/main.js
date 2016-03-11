@@ -1,4 +1,4 @@
-/**
+﻿/**
  * User: tgrabus
  * Date: 13.10.14
  * Time: 22:19
@@ -57,7 +57,7 @@ define(function (require) {
 
     system.debug(true);
 
-    app.title = 'Gospodarz';
+    app.title = 'Zdrowa żywność';
 
     app.configurePlugins({
         router: true,
