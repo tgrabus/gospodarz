@@ -1,4 +1,4 @@
 Fresh food
 =========
 
-Prototype allows searching fresh food the closest to you and presenting results on the map.
+Prototype allows for searching fresh food nearby you and presenting results on the map.
